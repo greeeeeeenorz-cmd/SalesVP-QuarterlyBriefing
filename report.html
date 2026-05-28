@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌广告客户三维分析报告 | 2026年5月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+SC:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Noto Sans SC','DM Sans',system-ui,sans-serif;background:#0a0e1a;color:#e8e6e3;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(circle,rgba(201,168,76,.04) 1px,transparent 1px);background-size:32px 32px}
+.fn{font-family:'DM Sans','Noto Sans SC',sans-serif}.gold{color:#c9a84c}.teal{color:#4ecdc4}.muted{color:rgba(232,230,227,.5)}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,14,26,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15);transition:all .3s}
+.navbar.scrolled{background:rgba(10,14,26,.95);box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.ni{max-width:1400px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nb{font-family:'Playfair Display',serif;font-size:.88rem;color:#c9a84c;letter-spacing:2px;text-transform:uppercase;flex-shrink:0}
+.nl{display:flex;gap:.7rem;list-style:none;align-items:center;flex-wrap:wrap}
+.nl a{color:rgba(232,230,227,.5);text-decoration:none;font-size:.68rem;letter-spacing:.6px;transition:color .3s;font-family:'DM Sans',sans-serif}
+.nl a:hover{color:#c9a84c}
+.ms{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:7px;color:#c9a84c;font-size:.73rem;padding:.25rem 22px .25rem .55rem;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c9a84c' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center;font-family:'DM Sans','Noto Sans SC',sans-serif}
+.ms:hover{border-color:rgba(201,168,76,.6)}.ms option{background:#0a0e1a;color:#e8e6e3}
+section{position:relative;z-index:1;padding:3.5rem 2rem}.ctn{max-width:1300px;margin:0 auto}
+.st{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;margin-bottom:.3rem;background:linear-gradient(135deg,#c9a84c,#e8d48b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ss{color:rgba(232,230,227,.42);font-size:.82rem;margin-bottom:1.8rem;font-family:'DM Sans',sans-serif;letter-spacing:1px}
+.dv{width:50px;height:2px;background:linear-gradient(90deg,#c9a84c,transparent);margin:.5rem 0 1.3rem}
+.fs{opacity:0;transform:translateY(35px);transition:opacity .7s,transform .7s}.fs.visible{opacity:1;transform:translateY(0)}
+.ndo{display:none;position:fixed;inset:0;z-index:999;background:rgba(10,14,26,.97);flex-direction:column;align-items:center;justify-content:center;text-align:center}.ndo.active{display:flex}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:65px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,#0a0e1a,transparent);pointer-events:none}
+.hbg{display:inline-block;padding:.3rem 1.2rem;border:1px solid rgba(201,168,76,.3);border-radius:50px;font-size:.68rem;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin-bottom:1.5rem;font-family:'DM Sans',sans-serif}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:.7rem;background:linear-gradient(135deg,#fff,#c9a84c 50%,#e8d48b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:.9rem;color:rgba(232,230,227,.45);letter-spacing:2px;font-family:'DM Sans',sans-serif;margin-bottom:2.5rem}
+.kr{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;width:100%;max-width:1100px;position:relative;z-index:2}
+.kc{background:linear-gradient(145deg,rgba(201,168,76,.08),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.18);border-radius:13px;padding:1.4rem 1.1rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.kc:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.5)}
+.kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,transparent)}
+.kl{font-size:.7rem;color:rgba(232,230,227,.45);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.25rem;font-family:'DM Sans',sans-serif}
+.kv{font-family:'DM Sans',sans-serif;font-size:2.2rem;font-weight:800;color:#fff;line-height:1.1}
+.kv .u{font-size:.8rem;color:rgba(232,230,227,.45);font-weight:400;margin-left:2px}
+.ki{position:absolute;bottom:8px;right:10px;font-size:1.5rem;opacity:.08}
+.kd{font-size:.68rem;margin-top:.25rem;color:rgba(232,230,227,.3);font-family:'DM Sans',sans-serif}
+.eg{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.ec{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.1);border-radius:11px;padding:1.4rem}.ec.fw{grid-column:1/-1}
+.ect{font-size:.95rem;font-weight:700;margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+.eb{display:flex;align-items:flex-start;gap:.55rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem;color:rgba(232,230,227,.68)}.eb:last-child{border:none}
+.eb .bi{flex-shrink:0;width:22px;height:22px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.7rem;margin-top:2px}
+.bg{background:rgba(201,168,76,.15)}.bte{background:rgba(78,205,196,.12)}.bre{background:rgba(239,68,68,.1)}.bpu{background:rgba(167,139,250,.12)}
+.sng{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.sni{text-align:center;padding:.6rem .3rem;background:rgba(201,168,76,.04);border-radius:8px}
+.sni .sl{font-size:.62rem;color:rgba(232,230,227,.38);letter-spacing:1px;text-transform:uppercase;font-family:'DM Sans',sans-serif}
+.sni .sv{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin:.1rem 0}
+.sni .sd{font-size:.62rem;color:rgba(232,230,227,.3)}
+.gr{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.gc{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.1);border-radius:13px;padding:1.8rem 1rem;text-align:center;transition:border-color .3s,transform .3s}
+.gc:hover{border-color:rgba(201,168,76,.4);transform:translateY(-2px)}
+.gwr{position:relative;width:150px;height:150px;margin:0 auto .8rem}.gwr canvas{width:100%!important;height:100%!important}
+.gce{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.gce .val{font-family:'DM Sans',sans-serif;font-size:1.7rem;font-weight:700;color:#fff}.gce .max{font-size:.7rem;color:rgba(232,230,227,.4)}
+.gtt{font-size:.9rem;font-weight:600;margin-bottom:.15rem}.gds{font-size:.75rem;color:rgba(232,230,227,.4)}
+.dh{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.dic{font-size:1.6rem;width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dic.sk{background:rgba(78,205,196,.1)}.dic.dm{background:rgba(201,168,76,.1)}.dic.pf{background:rgba(167,139,250,.1)}
+.dinf h3{font-size:1.1rem;font-weight:700;margin-bottom:.1rem}.dinf p{font-size:.75rem;color:rgba(232,230,227,.4)}
+.dgg{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1rem}.dgf{grid-column:1/-1}
+.stb{width:100%;font-size:.74rem;border-collapse:collapse}
+.stb th{text-align:left;padding:.4rem .45rem;font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:rgba(232,230,227,.38);border-bottom:1px solid rgba(201,168,76,.08);font-weight:600}
+.stb td{padding:.35rem .45rem;border-bottom:1px solid rgba(255,255,255,.03)}.stb tr:hover td{background:rgba(201,168,76,.02)}
+.sbar{width:55px;height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:.25rem}
+.sbf{height:100%;border-radius:2px}
+.ib{padding:.7rem .9rem;border-radius:8px;margin-bottom:.5rem}
+.ib.fi{background:rgba(201,168,76,.05);border-left:3px solid #c9a84c}
+.ib.ri{background:rgba(239,68,68,.04);border-left:3px solid #ef4444}
+.ib.op{background:rgba(34,197,94,.04);border-left:3px solid #22c55e}
+.ib .il{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.2rem;font-weight:700;font-family:'DM Sans',sans-serif}
+.ib.fi .il{color:#c9a84c}.ib.ri .il{color:#ef4444}.ib.op .il{color:#22c55e}
+.ib p{font-size:.78rem;color:rgba(232,230,227,.6);line-height:1.7}
+.mtbl{width:100%;font-size:.72rem;border-collapse:collapse;margin-top:.3rem}
+.mtbl th{text-align:left;padding:.3rem .4rem;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:rgba(232,230,227,.38);border-bottom:1px solid rgba(201,168,76,.08);font-weight:600}
+.mtbl td{padding:.28rem .4rem;border-bottom:1px solid rgba(255,255,255,.03);font-family:'DM Sans','Noto Sans SC',sans-serif}.mtbl tr:hover td{background:rgba(201,168,76,.02)}
+.mrk{display:inline-flex;width:18px;height:18px;border-radius:4px;align-items:center;justify-content:center;font-size:.58rem;font-weight:700}
+.mrk.t{background:rgba(201,168,76,.15);color:#c9a84c}.mrk.n{background:rgba(255,255,255,.05);color:rgba(232,230,227,.4)}
+
+.pv{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-bottom:1rem}
+.pb{height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.85rem;color:#fff;position:relative;transition:transform .3s}.pb:hover{transform:scaleX(1.02)}
+.pb .ptag2{position:absolute;left:-48px;font-size:.75rem;font-weight:600;letter-spacing:1px}.pb .pc{font-size:.95rem}
+.pi{background:rgba(201,168,76,.05);border-left:3px solid #c9a84c;padding:.8rem 1.1rem;border-radius:0 8px 8px 0;font-size:.8rem;color:rgba(232,230,227,.65);line-height:1.8;max-width:680px;margin:0 auto}
+.mv{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1.5rem .7rem;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(201,168,76,.06);margin-bottom:1rem;flex-wrap:wrap}
+.mti{width:75px;height:75px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700}
+.mti .ml{font-family:'Playfair Display',serif;font-size:1.3rem}.mti .mc{font-size:.62rem;color:rgba(232,230,227,.4);margin-top:.1rem}
+.mti.s{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:#c9a84c}
+.mti.a{background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);color:#e8d48b}
+.mti.b{background:rgba(78,205,196,.07);border:1px solid rgba(78,205,196,.18);color:#4ecdc4}
+.mti.c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:rgba(232,230,227,.55)}
+.maw{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.maw .mal{font-size:1rem;color:rgba(201,168,76,.25)}.maw .mat{font-size:.55rem;color:rgba(232,230,227,.28);font-family:'DM Sans',sans-serif}
+.mgg{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.mcd{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.06);border-radius:9px;padding:1rem}
+.mcdt{font-size:.82rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.3rem}
+.cbx{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.08);border-radius:12px;padding:1.3rem}.cbx canvas{max-height:480px}
+.rstg{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1rem}
+.rsc{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.06);border-radius:9px;padding:1rem;text-align:center}
+.rsc .sv{font-family:'DM Sans',sans-serif;font-size:1.3rem;font-weight:800;color:#fff}
+.rsc .sl{font-size:.62rem;color:rgba(232,230,227,.38);letter-spacing:1px;text-transform:uppercase;margin-top:.1rem;font-family:'DM Sans',sans-serif}
+.rvg{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.mxg{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;max-width:780px;margin:0 auto;border-radius:12px;overflow:hidden}
+.mxq{padding:1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.mxq .ql{font-size:.78rem;font-weight:700;letter-spacing:.6px}.mxq .qd{font-size:.68rem;color:rgba(232,230,227,.42);line-height:1.5}.mxq .qc{font-size:.7rem;color:rgba(232,230,227,.5);line-height:1.5;margin-top:auto}
+.qtl{background:rgba(78,205,196,.05);border:1px solid rgba(78,205,196,.08)}.qtl .ql{color:#4ecdc4}
+.qtr{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.08)}.qtr .ql{color:#c9a84c}
+.qbl{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04)}.qbl .ql{color:rgba(232,230,227,.45)}
+.qbr{background:rgba(239,68,68,.03);border:1px solid rgba(239,68,68,.06)}.qbr .ql{color:#ef4444}
+.mxa{display:flex;justify-content:space-between;font-size:.62rem;color:rgba(232,230,227,.25);letter-spacing:1px;text-transform:uppercase;margin-top:.5rem;font-family:'DM Sans',sans-serif;max-width:780px;margin-left:auto;margin-right:auto}
+.ieg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+.icd{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.06);border-radius:9px;padding:1rem}
+.ich{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.ich .inn{font-weight:700;font-size:.85rem}.ich .ibg{font-size:.6rem;padding:.1rem .4rem;border-radius:50px;font-weight:600}
+.imr{display:flex;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.75rem}.imr:last-child{border:none}
+.imr .label{color:rgba(232,230,227,.42)}.imr .value{font-family:'DM Sans',sans-serif;font-weight:600}
+.clg{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.clc{background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.01));border:1px solid rgba(201,168,76,.08);border-radius:11px;padding:1.2rem .9rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.clc:hover{border-color:rgba(201,168,76,.35);transform:translateY(-2px)}
+.clc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.clc:nth-child(1)::before{background:linear-gradient(90deg,#6b7280,#9ca3af)}
+.clc:nth-child(2)::before{background:linear-gradient(90deg,#4ecdc4,#44b8b0)}
+.clc:nth-child(3)::before{background:linear-gradient(90deg,#c9a84c,#e8d48b)}
+.clc:nth-child(4)::before{background:linear-gradient(90deg,#a78bfa,#8b5cf6)}
+.cln{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:1.5px;color:rgba(232,230,227,.28);text-transform:uppercase;margin-bottom:.1rem}
+.clnm{font-size:.92rem;font-weight:700;margin-bottom:.5rem}
+.cls{display:flex;justify-content:space-between;padding:.2rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.75rem}.cls:last-child{border:none}
+.cls .label{color:rgba(232,230,227,.42)}.cls .value{font-family:'DM Sans',sans-serif;font-weight:600}
+.tw{overflow-x:auto;border-radius:10px;border:1px solid rgba(201,168,76,.1)}
+table.dt{width:100%;border-collapse:collapse;font-size:.78rem}
+.dt thead{background:rgba(201,168,76,.07)}
+.dt th{padding:.6rem;text-align:left;font-weight:600;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:rgba(232,230,227,.5);border-bottom:1px solid rgba(201,168,76,.12)}
+.dt td{padding:.5rem .6rem;border-bottom:1px solid rgba(255,255,255,.04);font-family:'DM Sans','Noto Sans SC',sans-serif}.dt tr:hover td{background:rgba(201,168,76,.02)}
+.tag{display:inline-block;padding:.08rem .4rem;border-radius:50px;font-size:.62rem;font-weight:600;letter-spacing:.3px}
+.tg{background:rgba(201,168,76,.15);color:#c9a84c}.tte{background:rgba(78,205,196,.12);color:#4ecdc4}.tgr{background:rgba(255,255,255,.06);color:rgba(232,230,227,.45)}
+.trd{background:rgba(239,68,68,.12);color:#ef4444}.tgn{background:rgba(34,197,94,.12);color:#22c55e}.tpu{background:rgba(167,139,250,.12);color:#a78bfa}
+.sb2{display:flex;align-items:center;gap:.3rem}
+.sb2b{width:45px;height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.sb2f{height:100%;border-radius:2px;background:linear-gradient(90deg,#c9a84c,#e8d48b)}
+.stgg{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stc{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.08);border-radius:11px;padding:1.4rem;position:relative;overflow:hidden}
+.stc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c9a84c,#e8d48b)}
+.stn{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:2px;color:rgba(232,230,227,.28);text-transform:uppercase;margin-bottom:.15rem}
+.stt{font-size:1rem;font-weight:700;margin-bottom:.6rem}
+.stp{font-size:.78rem;color:rgba(232,230,227,.55);line-height:1.8}.stp strong{color:rgba(232,230,227,.8)}
+.agg{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.acd{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.08);border-radius:11px;padding:1.3rem;transition:border-color .3s}.acd:hover{border-color:rgba(201,168,76,.3)}
+.aci{font-size:1.4rem;margin-bottom:.5rem}
+.acp{font-family:'DM Sans',sans-serif;font-size:.65rem;letter-spacing:1.5px;color:#c9a84c;text-transform:uppercase;margin-bottom:.25rem}
+.act2{font-size:.9rem;font-weight:700;margin-bottom:.6rem}
+.all{list-style:none;padding:0}
+.all li{padding:.3rem 0;font-size:.75rem;color:rgba(232,230,227,.58);border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:flex-start;gap:.3rem}
+.all li::before{content:'\2192';color:#c9a84c;flex-shrink:0}
+.ptag3{display:inline-block;padding:.06rem .25rem;border-radius:3px;font-size:.55rem;font-weight:700;letter-spacing:.3px;margin-right:.15rem;flex-shrink:0}
+.p0{background:rgba(239,68,68,.15);color:#ef4444}.p1{background:rgba(201,168,76,.15);color:#c9a84c}.p2{background:rgba(78,205,196,.12);color:#4ecdc4}
+.apx{background:rgba(255,255,255,.01);border:1px solid rgba(201,168,76,.06);border-radius:12px;padding:2rem;margin-top:1rem}
+.aps{margin-bottom:1.5rem}.aps:last-child{margin-bottom:0}
+.apt{font-size:.9rem;font-weight:700;margin-bottom:.6rem;color:#c9a84c}
+.app{font-size:.78rem;color:rgba(232,230,227,.5);line-height:1.8}
+.app code{background:rgba(201,168,76,.1);padding:.1rem .3rem;border-radius:3px;font-size:.72rem;color:#c9a84c}
+.glo{display:grid;grid-template-columns:1fr 1fr;gap:.2rem 1.5rem}
+.gli{display:flex;gap:.4rem;font-size:.75rem;padding:.25rem 0}
+.gli .tm{color:#c9a84c;font-weight:600;flex-shrink:0;min-width:50px}
+.gli .df{color:rgba(232,230,227,.45)}
+footer{border-top:1px solid rgba(201,168,76,.1);padding:2.5rem 2rem;text-align:center;color:rgba(232,230,227,.25);font-size:.72rem;position:relative;z-index:1}
+footer .fl{margin-bottom:.2rem}
+@media(max-width:1024px){.kr{grid-template-columns:repeat(2,1fr)}.gr{grid-template-columns:1fr}.clg{grid-template-columns:repeat(2,1fr)}.agg{grid-template-columns:1fr}.nl{display:none}.eg{grid-template-columns:1fr}.dgg{grid-template-columns:1fr}.stgg{grid-template-columns:1fr}.rvg{grid-template-columns:1fr}.ieg{grid-template-columns:1fr}.rstg{grid-template-columns:repeat(2,1fr)}.mxg{grid-template-columns:1fr}.sng{grid-template-columns:repeat(2,1fr)}.mgg{grid-template-columns:1fr}}
+@media(max-width:640px){.kr{grid-template-columns:1fr}.clg{grid-template-columns:1fr}section{padding:3rem 1rem}.hero h1{font-size:1.8rem}}
+@media print{body{background:#fff;color:#1a1a1a}body::before{display:none}.navbar{display:none}section{padding:2rem 0;page-break-inside:avoid}.kc,.gc,.clc,.acd,.cbx,.ec,.mcd,.icd,.stc,.mcd{background:#f8f8f8;border-color:#ddd}.st{color:#8b6914;-webkit-text-fill-color:#8b6914}.kv{color:#1a1a1a}.gold{color:#8b6914}footer{color:#999}}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#0a0e1a}::-webkit-scrollbar-thumb{background:rgba(201,168,76,.25);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:rgba(201,168,76,.4)}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="ni">
+<div class="nb">Brand Analytics</div>
+<ul class="nl">
+<li><a href="#hero">概览</a></li>
+<li><a href="#exec">摘要</a></li>
+<li><a href="#dim">三维</a></li>
+<li><a href="#dStick">粘性</a></li>
+<li><a href="#dDem">需求</a></li>
+<li><a href="#dPro">利润</a></li>
+<li><a href="#pyr">分层</a></li>
+<li><a href="#mig">迁移</a></li>
+<li><a href="#rank">排名</a></li>
+<li><a href="#rev">收入</a></li>
+<li><a href="#ind">行业</a></li>
+<li><a href="#mx">风险</a></li>
+<li><a href="#clst">聚类</a></li>
+<li><a href="#t3">T3</a></li>
+<li><a href="#strat">战略</a></li>
+<li><a href="#act">建议</a></li>
+<li><a href="#apx">附录</a></li>
+<li><select class="ms" id="monthSel" onchange="switchMonth(this.value)">
+<option value="2026-06">2026年6月 (预告)</option>
+<option value="2026-05" selected>2026年5月</option>
+<option value="2026-04">2026年4月</option>
+<option value="2026-03">2026年3月</option>
+<option value="2026-02">2026年2月</option>
+<option value="2026-01">2026年1月</option>
+<option value="2025-12">2025年12月</option>
+</select></li>
+</ul></div></nav>
+<div class="ndo" id="ndOverlay">
+<div style="font-size:4rem;margin-bottom:1.5rem;opacity:.4">📊</div>
+<div style="font-family:'Playfair Display',serif;font-size:2rem;color:#c9a84c;margin-bottom:.8rem">该月数据暂未录入</div>
+<div style="color:rgba(232,230,227,.5);font-size:.95rem;max-width:400px">当前仅有 2026年5月 的完整数据。请选择已录入月份查看报告。</div>
+</div>
+<div id="reportContent">
+<section class="hero" id="hero">
+<div class="hbg">Sales VP Quarterly Briefing</div>
+<h1>品牌广告客户<br>三维分析报告</h1>
+<p class="hsub">销售总裁季度简报 &nbsp;|&nbsp; 2026年5月</p>
+<div class="kr">
+<div class="kc"><div class="kl">Total Clients</div><div class="kv fn"><span class="counter" data-target="159">0</span></div><div class="kd">首月基线</div><div class="ki">👥</div></div>
+<div class="kc"><div class="kl">Total Revenue</div><div class="kv fn">¥<span class="counter" data-target="22818">0</span><span class="u">万</span></div><div class="kd">首月基线</div><div class="ki">💰</div></div>
+<div class="kc"><div class="kl">Total Projects</div><div class="kv fn"><span class="counter" data-target="913">0</span></div><div class="kd">首月基线</div><div class="ki">📊</div></div>
+<div class="kc"><div class="kl">Avg ROI</div><div class="kv fn"><span class="counter" data-target="4.59" data-decimals="2">0</span></div><div class="kd">39家有ROI跟踪</div><div class="ki">📈</div></div>
+</div>
+</section>
+<section id="exec" class="fs">
+<div class="ctn">
+<div class="st">高管摘要</div>
+<div class="ss">EXECUTIVE SUMMARY — MAY 2026</div>
+<div class="dv"></div>
+<div class="eg">
+<div class="ec">
+<div class="ect"><span class="bi bg">🔍</span> 本月核心发现</div>
+<div class="eb"><span class="bi bg">1</span><div><strong>客户结构高度集中：</strong>23家A/B级客户（14.5%）贡献71.5%合同额，C级长尾客户占85.5%，整体客户质量呈"头重脚轻"格局。</div></div>
+<div class="eb"><span class="bi bte">2</span><div><strong>利润与规模倒挂：</strong>高ROI客户集中在中小体量（培生ROI=14.18、CODE-CREATE ROI=12.00），大体量客户ROI偏低但稳定，利润结构需要优化。</div></div>
+<div class="eb"><span class="bi bpu">3</span><div><strong>客户留存是核心挑战：</strong>近半客户（45.3%）为单次或低频合作，85.5%客户项目数不超过10个，投放多样性不足，交叉销售空间巨大。</div></div>
+</div>
+<div class="ec">
+<div class="ect"><span class="bi bte">⚠️</span> 管理层关注点</div>
+<div class="eb"><span class="bi bre">!</span><div><strong>腰部客户升级瓶颈：</strong>21家B级客户是最关键的增量池，但需求维度得分仅3.85（全局3.23），距A级门槛仍有差距。建议设立专项升级计划。</div></div>
+<div class="eb"><span class="bi bpu">!</span><div><strong>ROI跟踪盲区：</strong>120个客户（75.5%）无ROI跟踪数据，利润可观测性存在严重盲区，建议优先覆盖B级以上全部客户。</div></div>
+<div class="eb"><span class="bi bg">!</span><div><strong>收入波动性：</strong>月度收入在¥440万~¥2,399万间大幅波动，9月高峰后10月和2月明显低谷，需预设平滑方案。</div></div>
+</div>
+<div class="ec fw">
+<div class="ect"><span class="bi bg">📊</span> 数据快照 — 环比变化</div>
+<div class="sng">
+<div class="sni"><div class="sl">客户数</div><div class="sv fn">159</div><div class="sd">首月基线 —</div></div>
+<div class="sni"><div class="sl">总收入</div><div class="sv fn">¥2.28亿</div><div class="sd">首月基线 —</div></div>
+<div class="sni"><div class="sl">A级客户</div><div class="sv fn">2</div><div class="sd">占比 1.3%</div></div>
+<div class="sni"><div class="sl">综合均分</div><div class="sv fn">3.50</div><div class="sd">满分 10</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dim" class="fs">
+<div class="ctn">
+<div class="st">三维评估总览</div>
+<div class="ss">THREE-DIMENSIONAL SCORING OVERVIEW</div>
+<div class="dv"></div>
+<div class="gr">
+<div class="gc"><div class="gwr"><canvas id="gS"></canvas><div class="gce"><div class="val fn">3.68</div><div class="max">/ 10</div></div></div><div class="gtt">🔗 客户粘性 <span class="gold fn">Stickiness</span></div><div class="gds">权重35% · 衡量续约率、合作深度与关系稳固程度</div></div>
+<div class="gc"><div class="gwr"><canvas id="gD"></canvas><div class="gce"><div class="val fn">3.18</div><div class="max">/ 10</div></div></div><div class="gtt">📋 需求强度 <span class="gold fn">Demand</span></div><div class="gds">权重35% · 评估投放频次、预算规模与增长潜力</div></div>
+<div class="gc"><div class="gwr"><canvas id="gP"></canvas><div class="gce"><div class="val fn">3.68</div><div class="max">/ 10</div></div></div><div class="gtt">💎 利润贡献 <span class="gold fn">Profit</span></div><div class="gds">权重30% · 反映毛利率、回款效率与LTV价值</div></div>
+</div>
+</div>
+</section>
+<section id="dStick" class="fs">
+<div class="ctn">
+<div class="dh"><div class="dic sk">🔗</div><div class="dinf"><h3>粘性维度 <span class="gold fn">STICKINESS</span></h3><p>维度均分 3.68/10 · 5项子指标</p></div></div>
+<div class="dv"></div>
+<div class="dgg">
+<div>
+<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">S1</td><td>合作频次</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">项目总数</td><td class="fn" style="font-weight:600">3.42</td><td><div class="sbar"><div class="sbf" style="width:34%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S2</td><td>跨季度合作</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">季度数</td><td class="fn" style="font-weight:600">3.15</td><td><div class="sbar"><div class="sbf" style="width:31%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S3</td><td>老客率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">老客占比</td><td class="fn" style="font-weight:600">4.85</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S4</td><td>低撤单率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">撤单反向</td><td class="fn" style="font-weight:600">5.20</td><td><div class="sbar"><div class="sbf" style="width:52%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S5</td><td>投放多样性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">形式种类</td><td class="fn" style="font-weight:600">2.18</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#4ecdc4"></div></div></td></tr></tbody></table>
+</div>
+<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>85.5%客户项目数不超过10个，长尾效应显著。高频合作集中在少数头部客户：阿里妈妈(139个)、可口可乐(50个)、达能(50个)位列前三。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>近半客户（45.3%）为单次或低频合作，粘性分低于3分。客户留存是核心挑战，流失风险高。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>投放多样性不足——多数客户仅使用单一投放形式，存在交叉销售空间。引入PD/PDB产品可显著提升粘性。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">粘性维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.41</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">7.71</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">6.80</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">5.91</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">5.70</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.61</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">5.40</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.37</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">4.87</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">3.88</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">4.70</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">5.36</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">5.30</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">5.17</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">5.29</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">4.18</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.51</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.56</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">5.42</td></tr></tbody></table></div></div></div></section>
+<section id="dDem" class="fs">
+<div class="ctn">
+<div class="dh"><div class="dic dm">📋</div><div class="dinf"><h3>需求维度 <span class="gold fn">DEMAND</span></h3><p>维度均分 3.18/10 · 5项子指标</p></div></div>
+<div class="dv"></div>
+<div class="dgg">
+<div>
+<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">D1</td><td>客户体量</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">总合同额</td><td class="fn" style="font-weight:600">3.85</td><td><div class="sbar"><div class="sbf" style="width:38%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D2</td><td>平均单笔</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">单笔金额</td><td class="fn" style="font-weight:600">2.90</td><td><div class="sbar"><div class="sbf" style="width:28%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D3</td><td>行业覆盖</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">行业数</td><td class="fn" style="font-weight:600">2.10</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D4</td><td>新开引入</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">新开次数</td><td class="fn" style="font-weight:600">3.65</td><td><div class="sbar"><div class="sbf" style="width:36%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D5</td><td>结算稳定性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">结算比例</td><td class="fn" style="font-weight:600">4.80</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#c9a84c"></div></div></td></tr></tbody></table>
+</div>
+<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>TOP 5客户贡献约45%总合同金额，客户集中度偏高。合同金额高度集中在头部，腰部客户需求有待激活。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>行业分布以电商网服（255次）和国际快消（195次）为主，行业集中度偏高，一旦行业周期下行将影响整体收入。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>新客户（新开）占总项目的16.2%，获客能力稳定。平均结算比例约0.96，整体回款健康，客户付款意愿良好。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">需求维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.66</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">4.24</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">3.85</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">4.66</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">3.63</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.16</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">3.96</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">4.99</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">3.76</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">4.00</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">3.52</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">2.90</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">3.60</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">3.36</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.10</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.04</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">3.04</td></tr></tbody></table></div></div></div></section>
+<section id="dPro" class="fs">
+<div class="ctn">
+<div class="dh"><div class="dic pf">💎</div><div class="dinf"><h3>利润维度 <span class="gold fn">PROFIT</span></h3><p>维度均分 3.68/10 · 5项子指标</p></div></div>
+<div class="dv"></div>
+<div class="dgg">
+<div>
+<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">P1</td><td>ROI水平</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">ROI均值</td><td class="fn" style="font-weight:600">4.06</td><td><div class="sbar"><div class="sbf" style="width:40%;background:#a78bfa"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">P2</td><td>ROI稳定性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">极差反向</td><td class="fn" style="font-weight:600">3.50</td><td><div class="sbar"><div class="sbf" style="width:35%;background:#a78bfa"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">P3</td><td>收入规模</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">合同额</td><td class="fn" style="font-weight:600">3.85</td><td><div class="sbar"><div class="sbf" style="width:38%;background:#a78bfa"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">P4</td><td>低外采占比</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">外采反向</td><td class="fn" style="font-weight:600">3.20</td><td><div class="sbar"><div class="sbf" style="width:32%;background:#a78bfa"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">P5</td><td>利润率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">利润率</td><td class="fn" style="font-weight:600">3.15</td><td><div class="sbar"><div class="sbf" style="width:31%;background:#a78bfa"></div></div></td></tr></tbody></table>
+</div>
+<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>高ROI客户集中在中小体量：培生(ROI=14.18)、CODE-CREATE(ROI=12.00)、百乐(ROI=8.60)。大客户ROI偏低但稳定。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>120个客户无ROI跟踪数据，利润可观测性存在严重盲区。无法准确评估大部分客户的真实利润贡献。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>外采成本占收入比中位数约30%，部分客户（雅诗兰黛、路威酩轩）外采占比偏高，优化空间明确。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">利润维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">7.71</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">6.53</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">6.71</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">6.75</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">6.61</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">6.93</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">7.10</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.05</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">6.86</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">6.79</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">7.23</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">5.58</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">6.05</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">5.34</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">6.41</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">6.81</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">6.56</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">5.30</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">7.62</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">5.43</td></tr></tbody></table></div></div></div></section><section id="pyr" class="fs">
+<div class="ctn">
+<div class="st">客户分层金字塔</div>
+<div class="ss">CLIENT TIER DISTRIBUTION</div>
+<div class="dv"></div>
+<div class="pv">
+<div class="pb" style="width:100px;background:linear-gradient(135deg,#c9a84c,#e8d48b)"><span class="ptag2 gold">S 级</span><span class="pc">0</span></div>
+<div class="pb" style="width:250px;background:linear-gradient(135deg,#c9a84c,#b8943f)"><span class="ptag2 gold">A 级</span><span class="pc">2</span></div>
+<div class="pb" style="width:480px;background:linear-gradient(135deg,#4ecdc4,#2ea89e)"><span class="ptag2 teal">B 级</span><span class="pc">21</span></div>
+<div class="pb" style="width:100%;max-width:750px;background:linear-gradient(135deg,#4a5568,#2d3748)"><span class="ptag2 muted">C 级</span><span class="pc">136</span></div>
+</div>
+<div class="pi"><strong class="gold">关键洞察：</strong>当前客户结构呈典型"长尾分布"——C级客户占比 <strong>85.5%</strong>，贡献有限；A/B级仅 <strong>23</strong> 家却承载核心收入（71.5%合同额）。S级空缺意味着尚未培育出"战略级合作伙伴"，<strong>将B级客户向上迁移是增长的关键杠杆。</strong></div>
+</div>
+</section>
+<section id="mig" class="fs">
+<div class="ctn">
+<div class="st">客户迁移分析</div>
+<div class="ss">CLIENT TIER MIGRATION ANALYSIS</div>
+<div class="dv"></div>
+<div class="mv">
+<div class="mti s"><div class="ml">S</div><div class="mc">0 家</div></div>
+<div class="maw"><div class="mal">⇅</div><div class="mat">待追踪</div></div>
+<div class="mti a"><div class="ml">A</div><div class="mc">2 家</div></div>
+<div class="maw"><div class="mal">⇅</div><div class="mat">待追踪</div></div>
+<div class="mti b"><div class="ml">B</div><div class="mc">21 家</div></div>
+<div class="maw"><div class="mal">⇅</div><div class="mat">待追踪</div></div>
+<div class="mti c"><div class="ml">C</div><div class="mc">136 家</div></div>
+</div>
+<div class="mgg">
+<div class="mcd">
+<div class="mcdt">🔼 本月升级客户</div>
+<div style="color:rgba(232,230,227,.4);font-size:.8rem;padding:.5rem 0">— 首月报告，暂无迁移数据</div>
+<div style="font-size:.72rem;color:rgba(232,230,227,.3)">下期将追踪 B→A 及 C→B 升级动态</div>
+</div>
+<div class="mcd">
+<div class="mcdt">🔽 本月降级/流失客户</div>
+<div style="color:rgba(232,230,227,.4);font-size:.8rem;padding:.5rem 0">— 首月报告，暂无迁移数据</div>
+<div style="font-size:.72rem;color:rgba(232,230,227,.3)">将监控合作中断超过2个季度的客户</div>
+</div>
+<div class="mcd">
+<div class="mcdt">👁️ 重点关注 — 边界客户</div>
+<div style="font-size:.78rem;color:rgba(232,230,227,.6);line-height:1.7">
+<div style="padding:.2rem 0;border-bottom:1px solid rgba(255,255,255,.03)">• <strong>雅诗兰黛</strong> (4.59) — 距B级门槛仅0.09分</div>
+<div style="padding:.2rem 0;border-bottom:1px solid rgba(255,255,255,.03)">• <strong>欧莱雅</strong> (4.18) — C级头部，利润偏低</div>
+<div style="padding:.2rem 0;border-bottom:1px solid rgba(255,255,255,.03)">• <strong>苹果智元</strong> (4.95) — B级中段，需求待激活</div>
+<div style="padding:.2rem 0">• <strong>苹果电子</strong> (6.19) — A级底部，需保卫战</div>
+</div>
+</div>
+</div>
+<div class="pi" style="margin-top:1rem"><strong class="gold">迁移趋势洞察：</strong>首期报告建立基线。后续每月将追踪：①B级客户中综合分≥5.5的"准A级"客户（金拱门5.74、百事5.70、可口可乐5.61）；②C级客户中有升级潜力的"种子客户"；③任何维度分数下降超过1分的预警客户。</div>
+</div>
+</section>
+<section id="rank" class="fs">
+<div class="ctn">
+<div class="st">Top 20 客户排名</div>
+<div class="ss">CLIENT COMPOSITE SCORE RANKING</div>
+<div class="dv"></div>
+<div class="cbx" style="overflow-x:auto">
+<table class="dt"><thead><tr><th>#</th><th>客户名称</th><th>粘性</th><th>需求</th><th>利润</th><th>综合分</th><th>等级</th><th>合同额(万)</th><th>ROI</th></tr></thead><tbody>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">1</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn">5.41</td><td class="fn">5.66</td><td class="fn">7.71</td><td><div class="sb2"><span class="fn" style="font-weight:600">6.19</span><div class="sb2b"><div class="sb2f" style="width:88%"></div></div></div></td><td><span class="tag tg">A级</span></td><td class="fn">¥1,663</td><td class="fn">---</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">2</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn">7.71</td><td class="fn">4.24</td><td class="fn">6.53</td><td><div class="sb2"><span class="fn" style="font-weight:600">6.14</span><div class="sb2b"><div class="sb2f" style="width:87%"></div></div></div></td><td><span class="tag tg">A级</span></td><td class="fn">¥2,291</td><td class="fn">1.50</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">3</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn">6.80</td><td class="fn">3.85</td><td class="fn">6.71</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.74</span><div class="sb2b"><div class="sb2f" style="width:82%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥1,074</td><td class="fn">3.69</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">4</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn">5.91</td><td class="fn">4.58</td><td class="fn">6.75</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.70</span><div class="sb2b"><div class="sb2f" style="width:81%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥1,580</td><td class="fn">2.80</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">5</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn">5.70</td><td class="fn">4.66</td><td class="fn">6.61</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.61</span><div class="sb2b"><div class="sb2f" style="width:80%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥1,054</td><td class="fn">2.10</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">6</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn">4.61</td><td class="fn">4.58</td><td class="fn">6.93</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥54</td><td class="fn">8.60</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">7</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn">5.40</td><td class="fn">3.63</td><td class="fn">7.10</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥899</td><td class="fn">4.20</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">8</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn">5.37</td><td class="fn">5.16</td><td class="fn">5.05</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.20</span><div class="sb2b"><div class="sb2f" style="width:74%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥533</td><td class="fn">2.50</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">9</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn">4.87</td><td class="fn">3.96</td><td class="fn">6.86</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥53</td><td class="fn">5.10</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">10</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn">3.88</td><td class="fn">4.99</td><td class="fn">6.79</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥500</td><td class="fn">3.90</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">11</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn">4.70</td><td class="fn">3.76</td><td class="fn">7.23</td><td><div class="sb2"><span class="fn" style="font-weight:600">5.13</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥572</td><td class="fn">7.88</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">12</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn">5.36</td><td class="fn">4.00</td><td class="fn">5.58</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.95</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥1,207</td><td class="fn">1.80</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">13</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn">5.30</td><td class="fn">3.52</td><td class="fn">6.05</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.90</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥684</td><td class="fn">3.20</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">14</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn">5.17</td><td class="fn">4.25</td><td class="fn">5.34</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.89</span><div class="sb2b"><div class="sb2f" style="width:69%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥393</td><td class="fn">4.50</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">15</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn">5.29</td><td class="fn">2.90</td><td class="fn">6.41</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.79</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥80</td><td class="fn">6.80</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">16</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn">4.18</td><td class="fn">3.60</td><td class="fn">6.81</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.76</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥250</td><td class="fn">14.18</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">17</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn">4.25</td><td class="fn">3.36</td><td class="fn">6.56</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.63</span><div class="sb2b"><div class="sb2f" style="width:66%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥198</td><td class="fn">5.30</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">18</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn">4.51</td><td class="fn">4.10</td><td class="fn">5.30</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.61</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥383</td><td class="fn">3.70</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">19</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn">3.56</td><td class="fn">3.04</td><td class="fn">7.62</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.60</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥1</td><td class="fn">12.00</td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">20</td><td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn">5.42</td><td class="fn">3.04</td><td class="fn">5.43</td><td><div class="sb2"><span class="fn" style="font-weight:600">4.59</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td><td><span class="tag tte">B级</span></td><td class="fn">¥417</td><td class="fn">2.90</td></tr>
+</tbody></table>
+</div>
+<div class="cbx" style="margin-top:1.5rem"><canvas id="topChart"></canvas></div>
+</div>
+</section>
+<section id="radar" class="fs">
+<div class="ctn">
+<div class="st">Top 5 三维雷达</div>
+<div class="ss">TOP 5 CLIENTS — THREE-DIMENSION RADAR</div>
+<div class="dv"></div>
+<div class="cbx" style="max-width:650px;margin:0 auto"><canvas id="radarChart"></canvas></div>
+</div>
+</section><section id="rev" class="fs">
+<div class="ctn">
+<div class="st">收入与增长分析</div>
+<div class="ss">REVENUE & GROWTH ANALYSIS</div>
+<div class="dv"></div>
+<div class="rstg">
+<div class="rsc"><div class="sv fn">¥2.28亿</div><div class="sl">12个月总收入</div></div>
+<div class="rsc"><div class="sv fn">¥1,901万</div><div class="sl">月均收入</div></div>
+<div class="rsc"><div class="sv fn">¥2,399万</div><div class="sl">峰值(9月)</div></div>
+<div class="rsc"><div class="sv fn">¥441万</div><div class="sl">低谷(2月)</div></div>
+</div>
+<div class="cbx" style="margin-bottom:1.5rem"><canvas id="trendChart"></canvas></div>
+<div class="rvg">
+<div class="cbx">
+<div style="font-size:.9rem;font-weight:700;margin-bottom:.8rem">📈 收入趋势洞察</div>
+<div class="ib fi"><div class="il">季节性规律</div><p>9月是收入高峰(¥2,399万)，主要受季节性投放驱动（电商大促前蓄水）。7-8月呈上升趋势，与Q3预算释放吻合。</p></div>
+<div class="ib ri"><div class="il">低谷预警</div><p>10月(¥568万)和2月(¥441万)是明显低谷，与国庆/春节假期高度相关。建议预设促销方案，提前锁定Q4和Q1框架协议。</p></div>
+<div class="ib op"><div class="il">增长信号</div><p>3-5月收入呈稳步回升态势（¥1,253→¥1,003→¥1,180万），客户数也从2月低谷14家恢复至25家，业务回暖趋势明确。</p></div>
+</div>
+<div class="cbx">
+<div style="font-size:.9rem;font-weight:700;margin-bottom:.8rem">🎯 收入集中度</div>
+<div style="margin-bottom:1rem">
+<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">TOP 5 客户收入占比</span><span class="fn" style="font-weight:700;color:#c9a84c">~45%</span></div>
+<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">TOP 10 客户收入占比</span><span class="fn" style="font-weight:700">~62%</span></div>
+<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">A+B级客户收入占比</span><span class="fn" style="font-weight:700">71.5%</span></div>
+<div style="display:flex;justify-content:space-between;padding:.4rem 0;font-size:.8rem"><span style="color:rgba(232,230,227,.5)">新客项目占比</span><span class="fn" style="font-weight:700;color:#4ecdc4">16.2%</span></div>
+</div>
+<div style="font-size:.78rem;color:rgba(232,230,227,.5);line-height:1.7">收入高度依赖头部客户，符合二八法则。降低集中度风险的关键路径是培育更多B级客户进入A级，同时扩大新客户获取。</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ind" class="fs">
+<div class="ctn">
+<div class="st">行业深度分析</div>
+<div class="ss">INDUSTRY BREAKDOWN & INSIGHTS</div>
+<div class="dv"></div>
+<div class="cbx"><canvas id="indChart"></canvas></div>
+<div class="ieg">
+<div class="icd">
+<div class="ich"><span class="inn">电商网服</span><span class="ibg" style="background:rgba(201,168,76,.15);color:#c9a84c">最高效行业</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">16 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥6,951.7 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#c9a84c">¥434.5 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn">31.6%</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">国际快消</span><span class="ibg" style="background:rgba(232,212,139,.12);color:#e8d48b">规模最大</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">22 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥5,828.5 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#e8d48b">¥264.9 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn">26.5%</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">IT/3C/家电</span><span class="ibg" style="background:rgba(78,205,196,.12);color:#4ecdc4">高均单</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">14 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥3,041.5 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#4ecdc4">¥217.2 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn">13.8%</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">美妆日化</span><span class="ibg" style="background:rgba(167,139,250,.12);color:#a78bfa">高潜赛道</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">10 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥2,152.6 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#a78bfa">¥215.3 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn">9.8%</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">奢侈品</span><span class="ibg" style="background:rgba(251,146,60,.12);color:#fb923c">稳健增长</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">5 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥1,252.4 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#fb923c">¥250.5 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn">5.7%</span></div>
+</div>
+</div>
+<div class="ieg" style="margin-top:.8rem">
+<div class="icd">
+<div class="ich"><span class="inn">旅游</span><span class="ibg" style="background:rgba(255,255,255,.06);color:rgba(232,230,227,.5)">8家客户</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥644.2 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn">¥80.5 万</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">其他</span><span class="ibg" style="background:rgba(255,255,255,.06);color:rgba(232,230,227,.5)">62家客户</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥636.8 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn">¥10.3 万</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">金融</span><span class="ibg" style="background:rgba(255,255,255,.06);color:rgba(232,230,227,.5)">6家客户</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥606.8 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn">¥101.1 万</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">汽车</span><span class="ibg" style="background:rgba(255,255,255,.06);color:rgba(232,230,227,.5)">2家客户</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥505.0 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn">¥252.5 万</span></div>
+</div>
+<div class="icd">
+<div class="ich"><span class="inn">教育</span><span class="ibg" style="background:rgba(255,255,255,.06);color:rgba(232,230,227,.5)">3家客户</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn">¥349.9 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn">¥116.6 万</span></div>
+</div>
+</div>
+<div class="pi" style="margin-top:1.2rem"><strong class="gold">行业拓展建议：</strong>电商网服行业16家客户贡献¥6,952万，户均¥435万，是最高效行业。国际快消22家客户贡献¥5,829万，户均¥265万。汽车行业仅2家客户但综合评分最高(4.19)，是高潜赛道——建议优先拓展汽车和金融行业的客户获取。</div>
+</div>
+</section>
+<section id="mx" class="fs">
+<div class="ctn">
+<div class="st">风险与机会矩阵</div>
+<div class="ss">RISK-OPPORTUNITY MATRIX</div>
+<div class="dv"></div>
+<div style="font-size:.75rem;color:rgba(232,230,227,.4);margin-bottom:1rem;text-align:center">X轴: 风险水平 (低 → 高) &nbsp;|&nbsp; Y轴: 机会价值 (低 → 高)</div>
+<div class="mxg">
+<div class="mxq qtl">
+<div class="ql">🟢 稳健增长</div>
+<div class="qd">低风险 + 高机会价值</div>
+<div class="qc">
+<strong>代表客户：</strong>金拱门、百事、可口可乐、达能<br>
+<strong>特征：</strong>高粘性(≥5.5) + 高利润(≥6.5)，合作稳定且回报丰厚<br>
+<strong>策略：</strong>优先保障服务质量，深挖跨品牌合作
+</div>
+</div>
+<div class="mxq qtr">
+<div class="ql">🟡 重点攻坚</div>
+<div class="qd">高风险 + 高机会价值</div>
+<div class="qc">
+<strong>代表客户：</strong>阿里妈妈、苹果电子、欧莱雅<br>
+<strong>特征：</strong>体量巨大但需求/粘性存在短板，ROI偏低<br>
+<strong>策略：</strong>专属客户经理 + 定制化投放方案
+</div>
+</div>
+<div class="mxq qbl">
+<div class="ql">⚪ 维持现状</div>
+<div class="qd">低风险 + 低机会价值</div>
+<div class="qc">
+<strong>代表客户：</strong>Cluster 0 基础交易客户（98家）<br>
+<strong>特征：</strong>单次合作、体量小、三维评分均在3分左右<br>
+<strong>策略：</strong>自动化运营，低成本维护
+</div>
+</div>
+<div class="mxq qbr">
+<div class="ql">🔴 谨慎投入</div>
+<div class="qd">高风险 + 低机会价值</div>
+<div class="qc">
+<strong>代表客户：</strong>低ROI且低粘性的长尾客户<br>
+<strong>特征：</strong>项目回报率低、合作不稳定<br>
+<strong>策略：</strong>评估投入产出比，考虑提高价格门槛
+</div>
+</div>
+</div>
+<div class="mxa"><span>← 低风险 LOW RISK</span><span>高风险 HIGH RISK →</span></div>
+</div>
+</section><section id="clst" class="fs">
+<div class="ctn">
+<div class="st">聚类分析</div>
+<div class="ss">K-MEANS CLUSTER ANALYSIS — 4 SEGMENTS</div>
+<div class="dv"></div>
+<div class="clg">
+<div class="clc">
+<div class="cln">Cluster 0</div>
+<div class="clnm">🔵 基础交易客户</div>
+<div class="cls"><span class="label">客户数</span><span class="value fn">98</span></div>
+<div class="cls"><span class="label">粘性</span><span class="value fn">3.23</span></div>
+<div class="cls"><span class="label">需求</span><span class="value fn">2.90</span></div>
+<div class="cls"><span class="label">利润</span><span class="value fn">2.81</span></div>
+<div class="cls"><span class="label">均单</span><span class="value fn">¥14.3万</span></div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.35);margin-top:.5rem;line-height:1.5">占61.6%，三维均分≈3，平均2.3个项目，大多数为单次合作</div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.3);margin-top:.3rem">代表: 长尾客户群</div>
+</div>
+<div class="clc">
+<div class="cln">Cluster 1</div>
+<div class="clnm">🟢 规模交易客户</div>
+<div class="cls"><span class="label">客户数</span><span class="value fn">23</span></div>
+<div class="cls"><span class="label">粘性</span><span class="value fn">4.04</span></div>
+<div class="cls"><span class="label">需求</span><span class="value fn">3.79</span></div>
+<div class="cls"><span class="label">利润</span><span class="value fn">3.10</span></div>
+<div class="cls"><span class="label">均单</span><span class="value fn">¥306.7万</span></div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.35);margin-top:.5rem;line-height:1.5">占14.5%，项目数和合同额高于均值，但利润率偏低</div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.3);margin-top:.3rem">代表: 欧莱雅/三星/联想/京东</div>
+</div>
+<div class="clc">
+<div class="cln">Cluster 2</div>
+<div class="clnm">🟡 高利润潜力客户</div>
+<div class="cls"><span class="label">客户数</span><span class="value fn">15</span></div>
+<div class="cls"><span class="label">粘性</span><span class="value fn">5.38</span></div>
+<div class="cls"><span class="label">需求</span><span class="value fn">4.33</span></div>
+<div class="cls"><span class="label">利润</span><span class="value fn">6.44</span></div>
+<div class="cls"><span class="label">均单</span><span class="value fn">¥862.7万</span></div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.35);margin-top:.5rem;line-height:1.5">占9.4%，三维全面领先，业务压舱石</div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.3);margin-top:.3rem">代表: 阿里妈妈/苹果/金拱门/百事</div>
+</div>
+<div class="clc">
+<div class="cln">Cluster 3</div>
+<div class="clnm">🟣 利润效率客户</div>
+<div class="cls"><span class="label">客户数</span><span class="value fn">23</span></div>
+<div class="cls"><span class="label">粘性</span><span class="value fn">4.10</span></div>
+<div class="cls"><span class="label">需求</span><span class="value fn">2.98</span></div>
+<div class="cls"><span class="label">利润</span><span class="value fn">6.14</span></div>
+<div class="cls"><span class="label">均单</span><span class="value fn">¥61.9万</span></div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.35);margin-top:.5rem;line-height:1.5">占14.5%，体量不大但ROI突出</div>
+<div style="font-size:.68rem;color:rgba(232,230,227,.3);margin-top:.3rem">代表: 雅诗兰黛/培生/玛氏</div>
+</div>
+</div></div></section>
+<section id="t3" class="fs">
+<div class="ctn">
+<div class="st">B级客户深度诊断</div>
+<div class="ss">T3 (B-TIER) CLIENT DEEP DIVE — 21 CLIENTS</div>
+<div class="dv"></div>
+<div class="tw"><table class="dt"><thead><tr><th>#</th><th>客户名称</th><th>粘性</th><th>需求</th><th>利润</th><th>综合分</th><th>合同额(万)</th><th>诊断</th></tr></thead><tbody>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">1</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td>
+<td class="fn">6.80</td><td class="fn">3.85</td><td class="fn">6.71</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.74</span><div class="sb2b"><div class="sb2f" style="width:82%"></div></div></div></td>
+<td class="fn">¥1,074</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">2</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td>
+<td class="fn">5.91</td><td class="fn">4.58</td><td class="fn">6.75</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.70</span><div class="sb2b"><div class="sb2f" style="width:81%"></div></div></div></td>
+<td class="fn">¥1,580</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">3</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td>
+<td class="fn">5.70</td><td class="fn">4.66</td><td class="fn">6.61</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.61</span><div class="sb2b"><div class="sb2f" style="width:80%"></div></div></div></td>
+<td class="fn">¥1,054</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">4</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td>
+<td class="fn">4.61</td><td class="fn">4.58</td><td class="fn">6.93</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td>
+<td class="fn">¥54</td>
+<td><span class="tag tgr">稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">5</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td>
+<td class="fn">5.40</td><td class="fn">3.63</td><td class="fn">7.10</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td>
+<td class="fn">¥899</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">6</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td>
+<td class="fn">5.37</td><td class="fn">5.16</td><td class="fn">5.05</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.20</span><div class="sb2b"><div class="sb2f" style="width:74%"></div></div></div></td>
+<td class="fn">¥533</td>
+<td><span class="tag tgn">粘性强</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">7</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td>
+<td class="fn">4.87</td><td class="fn">3.96</td><td class="fn">6.86</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
+<td class="fn">¥53</td>
+<td><span class="tag tte">利润优·需求待激活</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">8</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td>
+<td class="fn">3.88</td><td class="fn">4.99</td><td class="fn">6.79</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
+<td class="fn">¥500</td>
+<td><span class="tag tgr">稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">9</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td>
+<td class="fn">4.70</td><td class="fn">3.76</td><td class="fn">7.23</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">5.13</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
+<td class="fn">¥572</td>
+<td><span class="tag tte">利润优·需求待激活</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">10</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td>
+<td class="fn">5.36</td><td class="fn">4.00</td><td class="fn">5.58</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.95</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td>
+<td class="fn">¥1,207</td>
+<td><span class="tag tgn">粘性强</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">11</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td>
+<td class="fn">5.30</td><td class="fn">3.52</td><td class="fn">6.05</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.90</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td>
+<td class="fn">¥684</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">12</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td>
+<td class="fn">5.17</td><td class="fn">4.25</td><td class="fn">5.34</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.89</span><div class="sb2b"><div class="sb2f" style="width:69%"></div></div></div></td>
+<td class="fn">¥393</td>
+<td><span class="tag tgn">粘性强</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">13</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td>
+<td class="fn">5.29</td><td class="fn">2.90</td><td class="fn">6.41</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.79</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td>
+<td class="fn">¥80</td>
+<td><span class="tag tg">高潜稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">14</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td>
+<td class="fn">4.18</td><td class="fn">3.60</td><td class="fn">6.81</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.76</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td>
+<td class="fn">¥250</td>
+<td><span class="tag tte">利润优·需求待激活</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">15</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td>
+<td class="fn">4.25</td><td class="fn">3.36</td><td class="fn">6.56</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.63</span><div class="sb2b"><div class="sb2f" style="width:66%"></div></div></div></td>
+<td class="fn">¥198</td>
+<td><span class="tag tte">利润优·需求待激活</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">16</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td>
+<td class="fn">4.51</td><td class="fn">4.10</td><td class="fn">5.30</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.61</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
+<td class="fn">¥383</td>
+<td><span class="tag tgr">稳定</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">17</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td>
+<td class="fn">3.56</td><td class="fn">3.04</td><td class="fn">7.62</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.60</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
+<td class="fn">¥1</td>
+<td><span class="tag tte">利润优·需求待激活</span></td></tr>
+<tr><td class="fn" style="color:rgba(232,230,227,.35)">18</td>
+<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td>
+<td class="fn">5.42</td><td class="fn">3.04</td><td class="fn">5.43</td>
+<td><div class="sb2"><span class="fn" style="font-weight:600">4.59</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
+<td class="fn">¥417</td>
+<td><span class="tag tgr">稳定</span></td></tr>
+</tbody></table></div>
+<div style="margin-top:1.2rem" class="pi"><strong class="gold">T3客户分群策略：</strong>
+<strong>高粘高利润型</strong>（金拱门/百事/可口可乐/达能）：深挖需求，推动跨行业合作。
+<strong>高利润低粘性型</strong>（百乐/亿滋/维萨/培生）：提升复购率，转向年度框架合作。
+<strong>均衡型</strong>（路威酩轩/苹果智元/历峰）：找到突破口，集中资源打造一个维度的跃升。</div>
+</div>
+</section><section id="strat" class="fs">
+<div class="ctn">
+<div class="st">战略结论与方向讨论</div>
+<div class="ss">STRATEGIC CONCLUSIONS & DIRECTION DISCUSSION</div>
+<div class="dv"></div>
+<div class="stgg">
+<div class="stc">
+<div class="stn">STRATEGY 01</div>
+<div class="stt">客户结构优化：从"头重脚轻"到"橄榄型"</div>
+<div class="stp">当前85.5%客户为C级，头部依赖度极高。23家A/B级客户承载71.5%的合同额，一旦头部客户流失将造成不可逆的收入塌陷。</div>
+<div class="stp" style="margin-top:.5rem"><strong>建议目标：</strong>6个月内将B级客户从21家提升至35家，A级从2家提升至5家。核心路径是将Cluster 1（规模交易客户，23家）中利润率有提升空间的客户（如欧莱雅、三星）向Cluster 2转化。</div>
+<div class="stp" style="margin-top:.5rem"><strong>关键抓手：</strong>①针对B级客户设立季度review机制，逐客户制定升级路线图；②将"需求维度"作为重点突破方向——通过跨品牌线合作和行业拓展提升D1-D3得分。</div>
+</div>
+<div class="stc">
+<div class="stn">STRATEGY 02</div>
+<div class="stt">利润质量 vs 规模增长的取舍</div>
+<div class="stp">数据呈现一个有趣现象：高ROI客户往往是中小体量（培生ROI=14.18、CODE-CREATE ROI=12.00），而大体量客户（阿里妈妈ROI=1.50）ROI偏低。这不是悖论，而是不同客户类型的价值逻辑差异。</div>
+<div class="stp" style="margin-top:.5rem"><strong>大客户策略：</strong>侧重"稳规模 + 提效率"。通过降低外采成本和优化内部流程保利润。大客户的核心价值在于收入确定性和品牌背书效应，不应以ROI单一指标衡量。</div>
+<div class="stp" style="margin-top:.5rem"><strong>中小客户策略：</strong>侧重"复制高ROI模型"。将高ROI项目的投放策略标准化输出，形成可复制的"高ROI投放包"，吸引同类客户批量获取。</div>
+</div>
+<div class="stc">
+<div class="stn">STRATEGY 03</div>
+<div class="stt">投放产品组合升级</div>
+<div class="stp">当前PD（程序化直投）占投放的60%+，但PD客户的ROI波动较大（标准差高于常规投放）。多数客户仅使用单一投放形式，投放多样性得分（S5）仅2.18，是全部15项子指标中最低的。</div>
+<div class="stp" style="margin-top:.5rem"><strong>组合策略：</strong>对ROI敏感客户推"常规+PD"组合包，以常规投放保底、PD冲量。对预算充裕客户推PDB（私有市场竞价），提高溢价空间。目标是将S5指标从2.18提升至3.5+。</div>
+<div class="stp" style="margin-top:.5rem"><strong>执行路径：</strong>梳理90家仅使用单一投放形式的客户名单，按行业和体量分组，设计针对性的产品推荐方案。预计可带动粘性分提升15-20%。</div>
+</div>
+<div class="stc">
+<div class="stn">STRATEGY 04</div>
+<div class="stt">数据驱动的精细化运营</div>
+<div class="stp">当前仅39/159（24.5%）客户有ROI数据，利润可观测性存在严重盲区。没有数据就没有管理——无法准确评估大部分客户的真实利润贡献，资源分配缺乏依据。</div>
+<div class="stp" style="margin-top:.5rem"><strong>建议建立"客户三维评分看板"，每月自动更新：</strong></div>
+<div class="stp" style="margin-top:.3rem">① <strong>粘性下降预警</strong>：合作间隔超过2个季度自动标黄，触发客户经理回访<br>② <strong>需求增长信号</strong>：客户主动询价次数增加时触发商机提醒，及时追加资源<br>③ <strong>利润红线</strong>：单项目ROI &lt; 1.5自动审核成本结构，必要时调整报价</div>
+</div>
+</div>
+</div>
+</section>
+<section id="act" class="fs">
+<div class="ctn">
+<div class="st">行动建议</div>
+<div class="ss">STRATEGIC RECOMMENDATIONS — PRIORITIZED</div>
+<div class="dv"></div>
+<div class="agg">
+<div class="acd">
+<div class="aci">⚡</div>
+<div class="acp">Short-term · 1-3个月</div>
+<div class="act2">速赢行动</div>
+<ul class="all">
+<li><span class="ptag3 p0">P0</span>A级客户保卫战：苹果/阿里妈妈各安排专属客户经理，确保续约率</li>
+<li><span class="ptag3 p0">P0</span>T3客户集中攻坚：21家B级客户逐一制定季度合作计划，目标5-8家升级</li>
+<li><span class="ptag3 p0">P1</span>高ROI案例包装：培生(14.18)/CODE-CREATE(12.00)/维萨(7.88)打造标杆</li>
+<li><span class="ptag3 p1">P1</span>9月旺季前锁定头部客户Q3框架协议，预防10月低谷</li>
+<li><span class="ptag3 p1">P1</span>ROI跟踪覆盖扩展：优先覆盖全部B级以上客户（23家）</li>
+<li><span class="ptag3 p2">P2</span>对利润>6但需求<3的客户启动需求唤醒campaign</li>
+</ul>
+<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 销售运营 + 客户成功</div>
+</div>
+<div class="acd">
+<div class="aci">🎯</div>
+<div class="acp">Mid-term · 3-6个月</div>
+<div class="act2">结构优化</div>
+<ul class="all">
+<li><span class="ptag3 p0">P0</span>建立B→A升级通道，目标迁移3-5家至A级（金拱门/百事/可口可乐优先）</li>
+<li><span class="ptag3 p0">P1</span>Cluster 2客户专属服务团队，保住高利润客户群</li>
+<li><span class="ptag3 p1">P1</span>投放交叉销售：90家单一形式客户推荐PD/PDB，目标S5提升50%</li>
+<li><span class="ptag3 p1">P1</span>行业拓展：汽车(2家→5家)和金融行业专项获客计划</li>
+<li><span class="ptag3 p2">P2</span>月度趋势低谷期(10/2月)预设促销方案和框架协议锁定</li>
+</ul>
+<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 销售部 + 产品策略 + 行业BD</div>
+</div>
+<div class="acd">
+<div class="aci">🚀</div>
+<div class="acp">Long-term · 6-12个月</div>
+<div class="act2">战略布局</div>
+<ul class="all">
+<li><span class="ptag3 p0">P0</span>培育2-3家S级战略合作伙伴，填补顶级客户空白</li>
+<li><span class="ptag3 p1">P1</span>C级长尾客户自动化运营体系，降低服务成本，激活复购</li>
+<li><span class="ptag3 p1">P1</span>客户数据中台建设，实现三维评分实时监测和自动预警</li>
+<li><span class="ptag3 p2">P2</span>"高ROI投放包"产品化，标准化输出吸引同类客户批量获取</li>
+</ul>
+<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 战略部 + 数据团队 + 产品部</div>
+</div>
+</div>
+</div>
+</section>
+<section id="apx" class="fs">
+<div class="ctn">
+<div class="st">附录</div>
+<div class="ss">APPENDIX — METHODOLOGY & GLOSSARY</div>
+<div class="dv"></div>
+<div class="apx">
+<div class="aps">
+<div class="apt">📐 评分方法论</div>
+<div class="app">
+<strong>评分公式：</strong>综合评分 = 粘性×0.35 + 需求×0.35 + 利润×0.30<br><br>
+<strong>归一化方法：</strong>各指标采用 Min-Max 归一化映射到 1~10 分区间。<code>score = 1 + (x - min) / (max - min) × 9</code><br><br>
+<strong>客户等级划分：</strong><br>
+• S级 (≥7.5): 战略级标杆客户<br>
+• A级 (6.0~7.5): 核心重点客户<br>
+• B级 (4.5~6.0): 高潜力发展客户<br>
+• C级 (&lt;4.5): 基础交易型客户<br><br>
+<strong>聚类方法：</strong>K-Means聚类（K=4），基于三维评分进行客户分群。使用scikit-learn实现，随机种子42。
+</div>
+</div>
+<div class="aps">
+<div class="apt">📊 数据质量说明</div>
+<div class="app">
+<strong>数据源：</strong>ROI项目明细表（112条）+ 品牌广告收入明细表（921条）<br>
+<strong>统计周期：</strong>2024年1月 ~ 2026年5月<br>
+<strong>数据限制：</strong>ROI数据仅覆盖39/159（24.5%）客户，利润维度评估存在盲区。建议后续扩展ROI跟踪覆盖范围。<br>
+<strong>已知偏差：</strong>外采成本数据可能存在滞后，部分客户的实际利润率可能高于/低于计算值。
+</div>
+</div>
+<div class="aps">
+<div class="apt">📖 术语表</div>
+<div class="glo">
+<div class="gli"><span class="tm">PD</span><span class="df">程序化直投 (Programmatic Direct)</span></div>
+<div class="gli"><span class="tm">PDB</span><span class="df">私有市场竞价 (Private Deal Buying)</span></div>
+<div class="gli"><span class="tm">RTB</span><span class="df">实时竞价 (Real-Time Bidding)</span></div>
+<div class="gli"><span class="tm">ROI</span><span class="df">投资回报率 (Return on Investment)</span></div>
+<div class="gli"><span class="tm">LTV</span><span class="df">客户终身价值 (Lifetime Value)</span></div>
+<div class="gli"><span class="tm">T3</span><span class="df">B级客户（综合分4.5~6.0）的别称</span></div>
+<div class="gli"><span class="tm">S5</span><span class="df">投放多样性指标（粘性维度子指标）</span></div>
+<div class="gli"><span class="tm">新开</span><span class="df">首次合作的客户或项目</span></div>
+<div class="gli"><span class="tm">外采</span><span class="df">外部采购的流量/资源成本</span></div>
+<div class="gli"><span class="tm">撤单</span><span class="df">已签约但未执行的项目</span></div>
+</div>
+</div>
+<div class="aps">
+<div class="apt">📅 下期报告预告</div>
+<div class="app">
+<strong>2026年6月报告将新增：</strong><br>
+• 客户迁移追踪：B→A升级进度、C→B种子客户表现<br>
+• 环比分析：各维度得分变化趋势、收入环比增长<br>
+• 预警客户清单：粘性/利润下降超1分的客户<br>
+• 行业拓展进展：汽车和金融行业新客户表现<br>
+• ROI覆盖率提升进度
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<footer>
+<div class="fl">品牌广告客户三维分析报告 · 2026年5月</div>
+<div class="fl">数据来源：内部CRM系统 · 统计周期：2024.01 — 2026.05</div>
+<div class="fl" style="margin-top:.6rem;font-size:.65rem">本报告仅供内部决策参考，数据已脱敏处理。未经授权请勿外传。</div>
+</footer><script>
+const D = {"topLabels": ["苹果电子产品商贸（北京）有限公司", "杭州阿里妈妈软件服务有限公司", "金拱门（中国）有限公司", "上海百事食品有限公司", "可口可乐饮料（上海）有限公司", "百乐贸易（深圳）有限公司", "达能（中国）食品饮料有限公司", "路威酩轩香水化妆品（上海）有限公司", "菲仕兰食品贸易（上海）有限公司", "亿滋食品企业管理（上海）有限公司", "维萨信息系统（上海）有限公司", "苹果智元咨询（北京）有限公司", "历峰商业有限公司", "埃克森美孚（中国）投资有限公司", "露露乐蒙贸易（上海）有限公司", "培生（北京）管理咨询有限公司", "广州聚耀信息科技有限公司", "上海国际主题乐园有限公司", "CODE-CREATE LIMITED", "雅诗兰黛（上海）商贸有限公司"], "topScores": [6.19, 6.14, 5.74, 5.7, 5.61, 5.29, 5.29, 5.2, 5.14, 5.14, 5.13, 4.95, 4.9, 4.89, 4.79, 4.76, 4.63, 4.61, 4.6, 4.59], "topStick": [5.41, 7.71, 6.8, 5.91, 5.7, 4.61, 5.4, 5.37, 4.87, 3.88, 4.7, 5.36, 5.3, 5.17, 5.29, 4.18, 4.25, 4.51, 3.56, 5.42], "topDemand": [5.66, 4.24, 3.85, 4.58, 4.66, 4.58, 3.63, 5.16, 3.96, 4.99, 3.76, 4.0, 3.52, 4.25, 2.9, 3.6, 3.36, 4.1, 3.04, 3.04], "topProfit": [7.71, 6.53, 6.71, 6.75, 6.61, 6.93, 7.1, 5.05, 6.86, 6.79, 7.23, 5.58, 6.05, 5.34, 6.41, 6.81, 6.56, 5.3, 7.62, 5.43], "monthLabels": ["2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05"], "monthProj": [57, 61, 64, 79, 44, 32, 33, 50, 32, 39, 55, 36], "monthRev": [1596.6, 1754.1, 1337.2, 2399.3, 568.3, 944.7, 957.3, 768.3, 440.6, 1252.5, 1002.8, 1180.1], "monthCli": [26, 34, 35, 40, 28, 20, 23, 27, 14, 19, 20, 25], "indLabels": ["电商网服", "国际快消", "IT/3C/家电", "美妆日化", "奢侈品", "旅游", "其他", "金融", "汽车", "教育"], "indRev": [6951.7, 5828.5, 3041.5, 2152.6, 1252.4, 644.2, 636.8, 606.8, 505.0, 349.9], "indCli": [16, 22, 14, 10, 5, 8, 62, 6, 2, 3]};
+
+// Tier helpers
+function tier(i){if(i<2)return'A';if(i<20)return'B';return'C'}
+function tierC(t){return t==='A'?'#c9a84c':t==='B'?'#4ecdc4':'#6b7280'}
+
+// Chart defaults
+Chart.defaults.color='rgba(232,230,227,0.5)';
+Chart.defaults.borderColor='rgba(255,255,255,0.04)';
+Chart.defaults.font.family="'DM Sans','Noto Sans SC',sans-serif";
+
+// Gauge helper
+function mkGauge(id,val,color){
+  new Chart(document.getElementById(id).getContext('2d'),{
+    type:'doughnut',
+    data:{datasets:[{data:[val,10-val],backgroundColor:[color,'rgba(255,255,255,0.03)'],borderWidth:0,circumference:270,rotation:225}]},
+    options:{cutout:'78%',plugins:{legend:{display:false},tooltip:{enabled:false}},animation:{animateRotate:true,duration:1500}}
+  });
+}
+
+// Chart init tracking
+const ci={};
+function initC(id,fn){if(ci[id])return;ci[id]=true;fn();}
+
+// Top 20 bar chart
+function renderTop20(){
+  const ctx=document.getElementById('topChart').getContext('2d');
+  const labels=D.topLabels.slice().reverse();
+  const scores=D.topScores.slice().reverse();
+  const colors=scores.map((_,i)=>tierC(tier(19-i)));
+  new Chart(ctx,{
+    type:'bar',
+    data:{labels:labels.map(l=>l.length>14?l.substring(0,14)+'...':l),datasets:[{data:scores,backgroundColor:colors.map(c=>c+'88'),borderColor:colors,borderWidth:1,borderRadius:4,barPercentage:0.7}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(10,14,26,0.95)',borderColor:'rgba(201,168,76,0.3)',borderWidth:1,callbacks:{label:c=>'综合评分: '+c.raw.toFixed(2)}}},scales:{x:{max:7,grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:{size:11}}},y:{grid:{display:false},ticks:{font:{size:10},color:'rgba(232,230,227,0.6)'}}},animation:{duration:1200,easing:'easeOutQuart'}}
+  });
+  document.getElementById('topChart').parentElement.style.height='580px';
+}
+
+// Radar
+function renderRadar(){
+  const ctx=document.getElementById('radarChart').getContext('2d');
+  const rc=[{bg:'rgba(201,168,76,0.15)',b:'#c9a84c'},{bg:'rgba(78,205,196,0.15)',b:'#4ecdc4'},{bg:'rgba(167,139,250,0.15)',b:'#a78bfa'},{bg:'rgba(251,146,60,0.15)',b:'#fb923c'},{bg:'rgba(244,114,182,0.15)',b:'#f472b6'}];
+  const sn=D.topLabels.slice(0,5).map(n=>n.length>10?n.substring(0,10)+'...':n);
+  new Chart(ctx,{
+    type:'radar',
+    data:{labels:['粘性','需求','利润'],datasets:Array.from({length:5},(_,i)=>({label:sn[i],data:[D.topStick[i],D.topDemand[i],D.topProfit[i]],backgroundColor:rc[i].bg,borderColor:rc[i].b,borderWidth:2,pointRadius:4,pointBackgroundColor:rc[i].b}))},
+    options:{responsive:true,scales:{r:{min:0,max:10,angleLines:{color:'rgba(255,255,255,0.05)'},grid:{color:'rgba(255,255,255,0.05)'},pointLabels:{font:{size:12},color:'rgba(232,230,227,0.6)'},ticks:{stepSize:2,font:{size:9},backdropColor:'transparent'}}},plugins:{legend:{position:'bottom',labels:{padding:14,font:{size:10},usePointStyle:true,pointStyle:'circle'}},tooltip:{backgroundColor:'rgba(10,14,26,0.95)',borderColor:'rgba(201,168,76,0.3)',borderWidth:1}},animation:{duration:1200}}
+  });
+}
+
+// Trend
+function renderTrend(){
+  const ctx=document.getElementById('trendChart').getContext('2d');
+  new Chart(ctx,{
+    type:'line',
+    data:{labels:D.monthLabels,datasets:[
+      {label:'项目数',data:D.monthProj,borderColor:'#4ecdc4',backgroundColor:'rgba(78,205,196,0.08)',fill:false,tension:0.4,pointRadius:4,pointBackgroundColor:'#4ecdc4',borderWidth:2.5,yAxisID:'y'},
+      {label:'收入(万)',data:D.monthRev,borderColor:'#c9a84c',backgroundColor:'rgba(201,168,76,0.08)',fill:false,tension:0.4,pointRadius:4,pointBackgroundColor:'#c9a84c',borderWidth:2.5,yAxisID:'y1'},
+      {label:'客户数',data:D.monthCli,borderColor:'rgba(167,139,250,0.6)',backgroundColor:'rgba(167,139,250,0.06)',fill:true,tension:0.4,pointRadius:3,pointBackgroundColor:'#a78bfa',borderWidth:1.5,borderDash:[5,5],yAxisID:'y'}
+    ]},
+    options:{responsive:true,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',labels:{padding:16,font:{size:10},usePointStyle:true}},tooltip:{backgroundColor:'rgba(10,14,26,0.95)',borderColor:'rgba(201,168,76,0.3)',borderWidth:1}},scales:{x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:{size:10}}},y:{position:'left',title:{display:true,text:'项目数/客户数',font:{size:10}},grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:{size:10}}},y1:{position:'right',title:{display:true,text:'收入(万)',font:{size:10}},grid:{drawOnChartArea:false},ticks:{font:{size:10}}}},animation:{duration:1500,easing:'easeOutQuart'}}
+  });
+}
+
+// Industry
+function renderInd(){
+  const ctx=document.getElementById('indChart').getContext('2d');
+  const colors=['#c9a84c','#e8d48b','#4ecdc4','#a78bfa','#fb923c','#f472b6','#6b7280','#60a5fa','#34d399','#fbbf24'];
+  new Chart(ctx,{
+    type:'bar',
+    data:{labels:D.indLabels,datasets:[{label:'收入(万)',data:D.indRev,backgroundColor:D.indRev.map((_,i)=>colors[i]+'88'),borderColor:colors,borderWidth:1,borderRadius:6,barPercentage:0.65}]},
+    options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(10,14,26,0.95)',borderColor:'rgba(201,168,76,0.3)',borderWidth:1,callbacks:{label:c=>'¥'+c.raw.toLocaleString()+'万 · '+D.indCli[c.dataIndex]+'家客户'}}},scales:{x:{grid:{color:'rgba(255,255,255,0.03)'},ticks:{font:{size:10},callback:v=>'¥'+v.toLocaleString()+'万'}},y:{grid:{display:false},ticks:{font:{size:11},color:'rgba(232,230,227,0.6)',callback:function(v,i){return D.indLabels[i]+' ('+D.indCli[i]+')'}}}},animation:{duration:1200,easing:'easeOutQuart'}}
+  });
+}
+
+
+// Counter animation
+function animateCounters(){
+  document.querySelectorAll('.counter').forEach(el=>{
+    const target=parseFloat(el.dataset.target);
+    const decimals=parseInt(el.dataset.decimals||'0');
+    const duration=2000;const start=performance.now();
+    function step(now){
+      const p=Math.min((now-start)/duration,1);
+      const eased=1-Math.pow(1-p,3);
+      let val=(target*eased).toFixed(decimals);
+      if(el.dataset.separator==='true')val=Number(val).toLocaleString();
+      el.textContent=val;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// Intersection Observer
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      const id=e.target.id;
+      if(id==='dim')initC('gauges',()=>{mkGauge('gS',3.68,'#4ecdc4');mkGauge('gD',3.18,'#c9a84c');mkGauge('gP',3.68,'#a78bfa');});
+      if(id==='rank')initC('top20',renderTop20);
+      if(id==='radar')initC('radar',renderRadar);
+      if(id==='rev')initC('trend',renderTrend);
+      if(id==='ind')initC('industry',renderInd);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.fs').forEach(s=>observer.observe(s));
+
+// Hero counter on load
+const heroObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateCounters();heroObs.disconnect();}
+},{threshold:0.3});
+const heroEl=document.getElementById('hero');
+if(heroEl)heroObs.observe(heroEl);
+
+// Navbar scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Month selector
+function switchMonth(val){
+  const overlay=document.getElementById('ndOverlay');
+  const content=document.getElementById('reportContent');
+  if(val==='2026-05'){
+    overlay.classList.remove('active');
+    content.style.display='';
+  } else {
+    overlay.classList.add('active');
+    content.style.display='none';
+  }
+}
+
+</script>
+</body></html>
