@@ -31,10 +31,13 @@ section{position:relative;z-index:1;padding:3.5rem 2rem}.ctn{max-width:1300px;ma
 .ndo{display:none;position:fixed;inset:0;z-index:999;background:rgba(10,14,26,.97);flex-direction:column;align-items:center;justify-content:center;text-align:center}.ndo.active{display:flex}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:65px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,#0a0e1a,transparent);pointer-events:none}
+#star-trail{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.hero>*:not(#star-trail){position:relative;z-index:2}
 .hbg{display:inline-block;padding:.3rem 1.2rem;border:1px solid rgba(201,168,76,.3);border-radius:50px;font-size:.68rem;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin-bottom:1.5rem;font-family:'DM Sans',sans-serif}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:800;line-height:1.15;margin-bottom:.7rem;background:linear-gradient(135deg,#fff,#c9a84c 50%,#e8d48b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hsub{font-size:.9rem;color:rgba(232,230,227,.45);letter-spacing:2px;font-family:'DM Sans',sans-serif;margin-bottom:2.5rem}
 .kr{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;width:100%;max-width:1100px;position:relative;z-index:2}
+.kc{display:flex;flex-direction:column;justify-content:space-between}
 .kc{background:linear-gradient(145deg,rgba(201,168,76,.08),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.18);border-radius:13px;padding:1.4rem 1.1rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
 .kc:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.5)}
 .kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,transparent)}
@@ -154,10 +157,10 @@ table.dt{width:100%;border-collapse:collapse;font-size:.78rem}
 .aci{font-size:1.4rem;margin-bottom:.5rem}
 .acp{font-family:'DM Sans',sans-serif;font-size:.65rem;letter-spacing:1.5px;color:#c9a84c;text-transform:uppercase;margin-bottom:.25rem}
 .act2{font-size:.9rem;font-weight:700;margin-bottom:.6rem}
-.all{list-style:none;padding:0}
-.all li{padding:.3rem 0;font-size:.75rem;color:rgba(232,230,227,.58);border-bottom:1px solid rgba(255,255,255,.03);display:flex;align-items:flex-start;gap:.3rem}
-.all li::before{content:'\2192';color:#c9a84c;flex-shrink:0}
-.ptag3{display:inline-block;padding:.06rem .25rem;border-radius:3px;font-size:.55rem;font-weight:700;letter-spacing:.3px;margin-right:.15rem;flex-shrink:0}
+.action-block{margin-bottom:.8rem;padding:.6rem .8rem;background:rgba(201,168,76,.03);border-radius:8px;border-left:2px solid var(--gold-dark)}
+.action-head{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.35rem;display:flex;align-items:center;gap:.4rem;line-height:1.5}
+.action-detail{font-size:.75rem;color:rgba(232,230,227,.55);line-height:1.75}
+.ptag3{display:inline-block;padding:.06rem .25rem;border-radius:3px;font-size:.55rem;font-weight:700;letter-spacing:.3rem;margin-right:.15rem;flex-shrink:0}
 .p0{background:rgba(239,68,68,.15);color:#ef4444}.p1{background:rgba(201,168,76,.15);color:#c9a84c}.p2{background:rgba(78,205,196,.12);color:#4ecdc4}
 .apx{background:rgba(255,255,255,.01);border:1px solid rgba(201,168,76,.06);border-radius:12px;padding:2rem;margin-top:1rem}
 .aps{margin-bottom:1.5rem}.aps:last-child{margin-bottom:0}
@@ -178,7 +181,7 @@ footer .fl{margin-bottom:.2rem}
 </head>
 <body>
 <nav class="navbar" id="navbar"><div class="ni">
-<div class="nb">Brand Analytics</div>
+<div class="nb" style="font-size:1.3rem;font-weight:700">品牌广告三维分析</div>
 <ul class="nl">
 <li><a href="#hero">概览</a></li>
 <li><a href="#exec">摘要</a></li>
@@ -193,7 +196,7 @@ footer .fl{margin-bottom:.2rem}
 <li><a href="#ind">行业</a></li>
 <li><a href="#mx">风险</a></li>
 <li><a href="#clst">聚类</a></li>
-<li><a href="#t3">T3</a></li>
+<li><a href="#t3">Top3</a></li>
 <li><a href="#strat">战略</a></li>
 <li><a href="#act">建议</a></li>
 <li><a href="#apx">附录</a></li>
@@ -214,14 +217,15 @@ footer .fl{margin-bottom:.2rem}
 </div>
 <div id="reportContent">
 <section class="hero" id="hero">
+<canvas id="star-trail"></canvas>
 <div class="hbg">Sales VP Quarterly Briefing</div>
 <h1>品牌广告客户<br>三维分析报告</h1>
 <p class="hsub">销售总裁季度简报 &nbsp;|&nbsp; 2026年5月</p>
 <div class="kr">
-<div class="kc"><div class="kl">Total Clients</div><div class="kv fn"><span class="counter" data-target="159">0</span></div><div class="kd">首月基线</div><div class="ki">👥</div></div>
-<div class="kc"><div class="kl">Total Revenue</div><div class="kv fn">¥<span class="counter" data-target="22818">0</span><span class="u">万</span></div><div class="kd">首月基线</div><div class="ki">💰</div></div>
-<div class="kc"><div class="kl">Total Projects</div><div class="kv fn"><span class="counter" data-target="913">0</span></div><div class="kd">首月基线</div><div class="ki">📊</div></div>
-<div class="kc"><div class="kl">Avg ROI</div><div class="kv fn"><span class="counter" data-target="4.59" data-decimals="2">0</span></div><div class="kd">39家有ROI跟踪</div><div class="ki">📈</div></div>
+<div class="kc"><div class="kl">5月活跃客户</div><div class="kv fn"><span class="counter" data-target="26">0</span><span class="u">家</span></div><div class="kd" style="color:#4ecdc4">▲ +30.0% vs 4月(20家)</div><div class="ki">👥</div></div>
+<div class="kc"><div class="kl">5月合同额</div><div class="kv fn">¥<span class="counter" data-target="1382" data-decimals="0">0</span><span class="u">万</span></div><div class="kd" style="color:#4ecdc4">▲ +36.7% vs 4月(¥1,011万)</div><div class="ki">💰</div></div>
+<div class="kc"><div class="kl">5月项目数</div><div class="kv fn"><span class="counter" data-target="44">0</span><span class="u">个</span></div><div class="kd" style="color:#ef4444">▼ -20.0% vs 4月(55个)</div><div class="ki">📊</div></div>
+<div class="kc"><div class="kl">平均ROI</div><div class="kv fn"><span class="counter" data-target="4.59" data-decimals="2">0</span></div><div class="kd">39家有ROI跟踪</div><div class="ki">📈</div></div>
 </div>
 </section>
 <section id="exec" class="fs">
@@ -234,7 +238,7 @@ footer .fl{margin-bottom:.2rem}
 <div class="ect"><span class="bi bg">🔍</span> 本月核心发现</div>
 <div class="eb"><span class="bi bg">1</span><div><strong>客户结构高度集中：</strong>23家A/B级客户（14.5%）贡献71.5%合同额，C级长尾客户占85.5%，整体客户质量呈"头重脚轻"格局。</div></div>
 <div class="eb"><span class="bi bte">2</span><div><strong>利润与规模倒挂：</strong>高ROI客户集中在中小体量（培生ROI=14.18、CODE-CREATE ROI=12.00），大体量客户ROI偏低但稳定，利润结构需要优化。</div></div>
-<div class="eb"><span class="bi bpu">3</span><div><strong>客户留存是核心挑战：</strong>近半客户（45.3%）为单次或低频合作，85.5%客户项目数不超过10个，投放多样性不足，交叉销售空间巨大。</div></div>
+<div class="eb"><span class="bi bpu">3</span><div><strong>客户留存是核心挑战：</strong>72家客户（45.3%）全部订单均标记为"新开"（即无后续复购），85.5%客户项目数不超过10个。投放多样性得分S5仅2.18，交叉销售空间巨大。</div></div>
 </div>
 <div class="ec">
 <div class="ect"><span class="bi bte">⚠️</span> 管理层关注点</div>
@@ -243,12 +247,15 @@ footer .fl{margin-bottom:.2rem}
 <div class="eb"><span class="bi bg">!</span><div><strong>收入波动性：</strong>月度收入在¥440万~¥2,399万间大幅波动，9月高峰后10月和2月明显低谷，需预设平滑方案。</div></div>
 </div>
 <div class="ec fw">
-<div class="ect"><span class="bi bg">📊</span> 数据快照 — 环比变化</div>
+<div class="ect"><span class="bi bg">📊</span> 数据快照 — 环比变化（5月 vs 4月）</div>
 <div class="sng">
-<div class="sni"><div class="sl">客户数</div><div class="sv fn">159</div><div class="sd">首月基线 —</div></div>
-<div class="sni"><div class="sl">总收入</div><div class="sv fn">¥2.28亿</div><div class="sd">首月基线 —</div></div>
-<div class="sni"><div class="sl">A级客户</div><div class="sv fn">2</div><div class="sd">占比 1.3%</div></div>
-<div class="sni"><div class="sl">综合均分</div><div class="sv fn">3.50</div><div class="sd">满分 10</div></div>
+<div class="sni"><div class="sl">客户数</div><div class="sv fn">26</div><div class="sd" style="color:#4ecdc4">▲ +30.0% <span style="color:rgba(232,230,227,.3)">(4月: 20)</span></div></div>
+<div class="sni"><div class="sl">合同额</div><div class="sv fn">¥1,382万</div><div class="sd" style="color:#4ecdc4">▲ +36.7% <span style="color:rgba(232,230,227,.3)">(4月: ¥1,011万)</span></div></div>
+<div class="sni"><div class="sl">项目数</div><div class="sv fn">44</div><div class="sd" style="color:#ef4444">▼ -20.0% <span style="color:rgba(232,230,227,.3)">(4月: 55)</span></div></div>
+<div class="sni"><div class="sl">均单金额</div><div class="sv fn">¥31.4万</div><div class="sd" style="color:#4ecdc4">▲ +70.8% <span style="color:rgba(232,230,227,.3)">(4月: ¥18.4万)</span></div></div>
+</div>
+<div style="margin-top:.8rem;font-size:.7rem;color:rgba(232,230,227,.35);line-height:1.6">
+<strong>环比说明：</strong>5月合同额¥1,382万较4月¥1,011万增长36.7%；活跃客户从20家增至26家(+30%)；项目数从55个降至44个(-20%)，但均单金额从¥18.4万提升至¥31.4万(+70.8%)，反映大单驱动增长。5月Top 3客户（亿滋¥200万、阿里妈妈¥170万、培生¥150万）合计贡献¥520万，占比37.6%。
 </div>
 </div>
 </div>
@@ -264,6 +271,16 @@ footer .fl{margin-bottom:.2rem}
 <div class="gc"><div class="gwr"><canvas id="gD"></canvas><div class="gce"><div class="val fn">3.18</div><div class="max">/ 10</div></div></div><div class="gtt">📋 需求强度 <span class="gold fn">Demand</span></div><div class="gds">权重35% · 评估投放频次、预算规模与增长潜力</div></div>
 <div class="gc"><div class="gwr"><canvas id="gP"></canvas><div class="gce"><div class="val fn">3.68</div><div class="max">/ 10</div></div></div><div class="gtt">💎 利润贡献 <span class="gold fn">Profit</span></div><div class="gds">权重30% · 反映毛利率、回款效率与LTV价值</div></div>
 </div>
+<div style="margin-top:2rem;padding:1.5rem;background:rgba(201,168,76,.03);border-left:3px solid #c9a84c;border-radius:0 8px 8px 0">
+<div style="font-size:.95rem;font-weight:700;margin-bottom:1rem;color:#c9a84c">📐 评分方法论</div>
+<div style="font-size:.78rem;color:rgba(232,230,227,.6);line-height:1.8">
+<strong>粘性维度 (5项)</strong>：S1合作频次(项目数) · S2跨季度合作(季度跨度) · S3复购率(老客订单占比) · S4低撤单率(1-撤单率) · S5投放多样性(投放形式种类)<br>
+<strong>需求维度 (5项)</strong>：D1客户体量(合同额) · D2平均单笔(合同额/项目数) · D3行业覆盖(行业数) · D4首单引入(首次合作订单数) · D5结算稳定性(结算比例)<br>
+<strong>利润维度 (5项)</strong>：P1 ROI水平(ROI值) · P2 ROI稳定性(1-变异系数) · P3收入规模(合同额) · P4低外采占比(1-外采比例) · P5利润率(毛利率)<br>
+<strong>综合评分</strong>：粘性×35% + 需求×35% + 利润×30%<br>
+<strong>分层标准</strong>：A级≥6.0 · B级4.5-6.0 · C级<4.5
+</div>
+</div>
 </div>
 </section>
 <section id="dStick" class="fs">
@@ -272,18 +289,18 @@ footer .fl{margin-bottom:.2rem}
 <div class="dv"></div>
 <div class="dgg">
 <div>
-<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">S1</td><td>合作频次</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">项目总数</td><td class="fn" style="font-weight:600">3.42</td><td><div class="sbar"><div class="sbf" style="width:34%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S2</td><td>跨季度合作</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">季度数</td><td class="fn" style="font-weight:600">3.15</td><td><div class="sbar"><div class="sbf" style="width:31%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S3</td><td>老客率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">老客占比</td><td class="fn" style="font-weight:600">4.85</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S4</td><td>低撤单率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">撤单反向</td><td class="fn" style="font-weight:600">5.20</td><td><div class="sbar"><div class="sbf" style="width:52%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S5</td><td>投放多样性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">形式种类</td><td class="fn" style="font-weight:600">2.18</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#4ecdc4"></div></div></td></tr></tbody></table>
+<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">S1</td><td>合作频次</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">项目总数</td><td class="fn" style="font-weight:600">3.42</td><td><div class="sbar"><div class="sbf" style="width:34%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S2</td><td>跨季度合作</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">季度数</td><td class="fn" style="font-weight:600">3.15</td><td><div class="sbar"><div class="sbf" style="width:31%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S3</td><td>复购率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">老客订单占比</td><td class="fn" style="font-weight:600">4.85</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S4</td><td>低撤单率</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">撤单反向</td><td class="fn" style="font-weight:600">5.20</td><td><div class="sbar"><div class="sbf" style="width:52%;background:#4ecdc4"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">S5</td><td>投放多样性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">形式种类</td><td class="fn" style="font-weight:600">2.18</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#4ecdc4"></div></div></td></tr></tbody></table>
 </div>
-<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>85.5%客户项目数不超过10个，长尾效应显著。高频合作集中在少数头部客户：阿里妈妈(139个)、可口可乐(50个)、达能(50个)位列前三。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>近半客户（45.3%）为单次或低频合作，粘性分低于3分。客户留存是核心挑战，流失风险高。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>投放多样性不足——多数客户仅使用单一投放形式，存在交叉销售空间。引入PD/PDB产品可显著提升粘性。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">粘性维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.41</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">7.71</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">6.80</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">5.91</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">5.70</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.61</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">5.40</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.37</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">4.87</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">3.88</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">4.70</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">5.36</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">5.30</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">5.17</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">5.29</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">4.18</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.51</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.56</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">5.42</td></tr></tbody></table></div></div></div></section>
+<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>85.5%客户项目数不超过10个，长尾效应显著。高频合作集中在少数头部客户：阿里妈妈(139个)、可口可乐(50个)、达能(50个)位列前三。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>72家客户（45.3%）所有订单均标记"新开"、无"老客"后续订单，粘性分低于3分。客户留存是核心挑战，流失风险高。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>投放多样性不足——多数客户仅使用单一投放形式，存在交叉销售空间。引入PD/PDB产品可显著提升粘性。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">粘性维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.41</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">7.71</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">6.80</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">5.91</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">5.70</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.61</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">5.40</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.37</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">4.87</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">3.88</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">4.70</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">5.36</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">5.30</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">5.17</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">5.29</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">4.18</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.51</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.56</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">5.42</td></tr></tbody></table></div></div></div></section>
 <section id="dDem" class="fs">
 <div class="ctn">
 <div class="dh"><div class="dic dm">📋</div><div class="dinf"><h3>需求维度 <span class="gold fn">DEMAND</span></h3><p>维度均分 3.18/10 · 5项子指标</p></div></div>
 <div class="dv"></div>
 <div class="dgg">
 <div>
-<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">D1</td><td>客户体量</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">总合同额</td><td class="fn" style="font-weight:600">3.85</td><td><div class="sbar"><div class="sbf" style="width:38%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D2</td><td>平均单笔</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">单笔金额</td><td class="fn" style="font-weight:600">2.90</td><td><div class="sbar"><div class="sbf" style="width:28%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D3</td><td>行业覆盖</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">行业数</td><td class="fn" style="font-weight:600">2.10</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D4</td><td>新开引入</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">新开次数</td><td class="fn" style="font-weight:600">3.65</td><td><div class="sbar"><div class="sbf" style="width:36%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D5</td><td>结算稳定性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">结算比例</td><td class="fn" style="font-weight:600">4.80</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#c9a84c"></div></div></td></tr></tbody></table>
+<table class="stb"><thead><tr><th>编号</th><th>指标</th><th>来源</th><th>均分</th><th>分布</th></tr></thead><tbody><tr><td class="fn" style="color:rgba(232,230,227,.4)">D1</td><td>客户体量</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">总合同额</td><td class="fn" style="font-weight:600">3.85</td><td><div class="sbar"><div class="sbf" style="width:38%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D2</td><td>平均单笔</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">单笔金额</td><td class="fn" style="font-weight:600">2.90</td><td><div class="sbar"><div class="sbf" style="width:28%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D3</td><td>行业覆盖</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">行业数</td><td class="fn" style="font-weight:600">2.10</td><td><div class="sbar"><div class="sbf" style="width:21%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D4</td><td>首单引入</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">首次合作订单数</td><td class="fn" style="font-weight:600">3.65</td><td><div class="sbar"><div class="sbf" style="width:36%;background:#c9a84c"></div></div></td></tr><tr><td class="fn" style="color:rgba(232,230,227,.4)">D5</td><td>结算稳定性</td><td style="color:rgba(232,230,227,.4);font-size:.7rem">结算比例</td><td class="fn" style="font-weight:600">4.80</td><td><div class="sbar"><div class="sbf" style="width:48%;background:#c9a84c"></div></div></td></tr></tbody></table>
 </div>
-<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>TOP 5客户贡献约45%总合同金额，客户集中度偏高。合同金额高度集中在头部，腰部客户需求有待激活。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>行业分布以电商网服（255次）和国际快消（195次）为主，行业集中度偏高，一旦行业周期下行将影响整体收入。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>新客户（新开）占总项目的16.2%，获客能力稳定。平均结算比例约0.96，整体回款健康，客户付款意愿良好。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">需求维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.66</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">4.24</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">3.85</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">4.66</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">3.63</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.16</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">3.96</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">4.99</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">3.76</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">4.00</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">3.52</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">2.90</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">3.60</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">3.36</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.10</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.04</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">3.04</td></tr></tbody></table></div></div></div></section>
+<div><div class="ib fi"><div class="il">核心发现 KEY FINDING</div><p>TOP 5客户贡献约45%总合同金额，客户集中度偏高。合同金额高度集中在头部，腰部客户需求有待激活。</p></div><div class="ib ri"><div class="il">风险警示 RISK</div><p>行业分布以电商网服（255次）和国际快消（195次）为主，行业集中度偏高，一旦行业周期下行将影响整体收入。</p></div><div class="ib op"><div class="il">机会洞察 OPPORTUNITY</div><p>首次合作订单占总项目的16.0%（149单），获客节奏稳定；老客订单占82.2%（762单），存量客户贡献绝大部分收入。结算比例均值0.96，回款健康。</p></div></div></div><div class="dgg"><div class="dgf"><div style="font-size:.9rem;font-weight:700;margin-bottom:.5rem">需求维度 TOP 10</div><table class="mtbl"><thead><tr><th>#</th><th>客户名称</th><th>维度分</th></tr></thead><tbody><tr><td><span class="mrk t">1</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果电子产品商贸（北京）有限公司</td><td class="fn" style="font-weight:600">5.66</td></tr><tr><td><span class="mrk t">2</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">杭州阿里妈妈软件服务有限公司</td><td class="fn" style="font-weight:600">4.24</td></tr><tr><td><span class="mrk t">3</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td><td class="fn" style="font-weight:600">3.85</td></tr><tr><td><span class="mrk n">4</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">5</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td><td class="fn" style="font-weight:600">4.66</td></tr><tr><td><span class="mrk n">6</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td><td class="fn" style="font-weight:600">4.58</td></tr><tr><td><span class="mrk n">7</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td><td class="fn" style="font-weight:600">3.63</td></tr><tr><td><span class="mrk n">8</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td><td class="fn" style="font-weight:600">5.16</td></tr><tr><td><span class="mrk n">9</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td><td class="fn" style="font-weight:600">3.96</td></tr><tr><td><span class="mrk n">10</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td><td class="fn" style="font-weight:600">4.99</td></tr><tr><td><span class="mrk n">11</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td><td class="fn" style="font-weight:600">3.76</td></tr><tr><td><span class="mrk n">12</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td><td class="fn" style="font-weight:600">4.00</td></tr><tr><td><span class="mrk n">13</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td><td class="fn" style="font-weight:600">3.52</td></tr><tr><td><span class="mrk n">14</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td><td class="fn" style="font-weight:600">4.25</td></tr><tr><td><span class="mrk n">15</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td><td class="fn" style="font-weight:600">2.90</td></tr><tr><td><span class="mrk n">16</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td><td class="fn" style="font-weight:600">3.60</td></tr><tr><td><span class="mrk n">17</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td><td class="fn" style="font-weight:600">3.36</td></tr><tr><td><span class="mrk n">18</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td><td class="fn" style="font-weight:600">4.10</td></tr><tr><td><span class="mrk n">19</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td><td class="fn" style="font-weight:600">3.04</td></tr><tr><td><span class="mrk n">20</span></td><td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td><td class="fn" style="font-weight:600">3.04</td></tr></tbody></table></div></div></div></section>
 <section id="dPro" class="fs">
 <div class="ctn">
 <div class="dh"><div class="dic pf">💎</div><div class="dinf"><h3>利润维度 <span class="gold fn">PROFIT</span></h3><p>维度均分 3.68/10 · 5项子指标</p></div></div>
@@ -399,7 +416,7 @@ footer .fl{margin-bottom:.2rem}
 <div class="cbx">
 <div style="font-size:.9rem;font-weight:700;margin-bottom:.8rem">📈 收入趋势洞察</div>
 <div class="ib fi"><div class="il">季节性规律</div><p>9月是收入高峰(¥2,399万)，主要受季节性投放驱动（电商大促前蓄水）。7-8月呈上升趋势，与Q3预算释放吻合。</p></div>
-<div class="ib ri"><div class="il">低谷预警</div><p>10月(¥568万)和2月(¥441万)是明显低谷，与国庆/春节假期高度相关。建议预设促销方案，提前锁定Q4和Q1框架协议。</p></div>
+<div class="ib ri"><div class="il">低谷预警</div><p>10月(¥568万)和2月(¥441万)是明显低谷，与国庆/春节假期高度相关。建议利用10月后"双11+双12"电商大促流量红利设计专属投放产品，2月结合春节社交场景推品牌红包裂变类创新产品。</p></div>
 <div class="ib op"><div class="il">增长信号</div><p>3-5月收入呈稳步回升态势（¥1,253→¥1,003→¥1,180万），客户数也从2月低谷14家恢复至25家，业务回暖趋势明确。</p></div>
 </div>
 <div class="cbx">
@@ -408,7 +425,7 @@ footer .fl{margin-bottom:.2rem}
 <div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">TOP 5 客户收入占比</span><span class="fn" style="font-weight:700;color:#c9a84c">~45%</span></div>
 <div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">TOP 10 客户收入占比</span><span class="fn" style="font-weight:700">~62%</span></div>
 <div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:.8rem"><span style="color:rgba(232,230,227,.5)">A+B级客户收入占比</span><span class="fn" style="font-weight:700">71.5%</span></div>
-<div style="display:flex;justify-content:space-between;padding:.4rem 0;font-size:.8rem"><span style="color:rgba(232,230,227,.5)">新客项目占比</span><span class="fn" style="font-weight:700;color:#4ecdc4">16.2%</span></div>
+<div style="display:flex;justify-content:space-between;padding:.4rem 0;font-size:.8rem"><span style="color:rgba(232,230,227,.5)">新客项目占比</span><span class="fn" style="font-weight:700;color:#4ecdc4">16.0%</span></div>
 </div>
 <div style="font-size:.78rem;color:rgba(232,230,227,.5);line-height:1.7">收入高度依赖头部客户，符合二八法则。降低集中度风险的关键路径是培育更多B级客户进入A级，同时扩大新客户获取。</div>
 </div>
@@ -457,6 +474,13 @@ footer .fl{margin-bottom:.2rem}
 <div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#fb923c">¥250.5 万</span></div>
 <div class="imr"><span class="label">收入占比</span><span class="value fn">5.7%</span></div>
 </div>
+<div class="icd" style="background:rgba(201,168,76,.04)">
+<div class="ich"><span class="inn" style="color:#c9a84c">前5行业汇总</span><span class="ibg" style="background:rgba(201,168,76,.2);color:#c9a84c">核心赛道</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">67 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn" style="color:#c9a84c">¥19,226.7 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#c9a84c">¥286.9 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn" style="color:#c9a84c">87.4%</span></div>
+</div>
 </div>
 <div class="ieg" style="margin-top:.8rem">
 <div class="icd">
@@ -484,6 +508,13 @@ footer .fl{margin-bottom:.2rem}
 <div class="imr"><span class="label">总收入</span><span class="value fn">¥349.9 万</span></div>
 <div class="imr"><span class="label">户均收入</span><span class="value fn">¥116.6 万</span></div>
 </div>
+<div class="icd" style="background:rgba(78,205,196,.04)">
+<div class="ich"><span class="inn" style="color:#4ecdc4">后5行业汇总</span><span class="ibg" style="background:rgba(78,205,196,.15);color:#4ecdc4">长尾赛道</span></div>
+<div class="imr"><span class="label">客户数</span><span class="value fn">81 家</span></div>
+<div class="imr"><span class="label">总收入</span><span class="value fn" style="color:#4ecdc4">¥2,742.7 万</span></div>
+<div class="imr"><span class="label">户均收入</span><span class="value fn" style="color:#4ecdc4">¥33.9 万</span></div>
+<div class="imr"><span class="label">收入占比</span><span class="value fn" style="color:#4ecdc4">12.6%</span></div>
+</div>
 </div>
 <div class="pi" style="margin-top:1.2rem"><strong class="gold">行业拓展建议：</strong>电商网服行业16家客户贡献¥6,952万，户均¥435万，是最高效行业。国际快消22家客户贡献¥5,829万，户均¥265万。汽车行业仅2家客户但综合评分最高(4.19)，是高潜赛道——建议优先拓展汽车和金融行业的客户获取。</div>
 </div>
@@ -508,7 +539,7 @@ footer .fl{margin-bottom:.2rem}
 <div class="ql">🟡 重点攻坚</div>
 <div class="qd">高风险 + 高机会价值</div>
 <div class="qc">
-<strong>代表客户：</strong>阿里妈妈、苹果电子、欧莱雅<br>
+<strong>代表客户：</strong>阿里妈妈、苹果智元、欧莱雅<br>
 <strong>特征：</strong>体量巨大但需求/粘性存在短板，ROI偏低<br>
 <strong>策略：</strong>专属客户经理 + 定制化投放方案
 </div>
@@ -587,123 +618,58 @@ footer .fl{margin-bottom:.2rem}
 </div></div></section>
 <section id="t3" class="fs">
 <div class="ctn">
-<div class="st">B级客户深度诊断</div>
-<div class="ss">T3 (B-TIER) CLIENT DEEP DIVE — 21 CLIENTS</div>
+<div class="st">Top 3 客户深度分析</div>
+<div class="ss">TOP 3 CLIENT DEEP DIVE</div>
 <div class="dv"></div>
-<div class="tw"><table class="dt"><thead><tr><th>#</th><th>客户名称</th><th>粘性</th><th>需求</th><th>利润</th><th>综合分</th><th>合同额(万)</th><th>诊断</th></tr></thead><tbody>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">1</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">金拱门（中国）有限公司</td>
-<td class="fn">6.80</td><td class="fn">3.85</td><td class="fn">6.71</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.74</span><div class="sb2b"><div class="sb2f" style="width:82%"></div></div></div></td>
-<td class="fn">¥1,074</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">2</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海百事食品有限公司</td>
-<td class="fn">5.91</td><td class="fn">4.58</td><td class="fn">6.75</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.70</span><div class="sb2b"><div class="sb2f" style="width:81%"></div></div></div></td>
-<td class="fn">¥1,580</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">3</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">可口可乐饮料（上海）有限公司</td>
-<td class="fn">5.70</td><td class="fn">4.66</td><td class="fn">6.61</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.61</span><div class="sb2b"><div class="sb2f" style="width:80%"></div></div></div></td>
-<td class="fn">¥1,054</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">4</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百乐贸易（深圳）有限公司</td>
-<td class="fn">4.61</td><td class="fn">4.58</td><td class="fn">6.93</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td>
-<td class="fn">¥54</td>
-<td><span class="tag tgr">稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">5</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">达能（中国）食品饮料有限公司</td>
-<td class="fn">5.40</td><td class="fn">3.63</td><td class="fn">7.10</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.29</span><div class="sb2b"><div class="sb2f" style="width:75%"></div></div></div></td>
-<td class="fn">¥899</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">6</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路威酩轩香水化妆品（上海）有限公司</td>
-<td class="fn">5.37</td><td class="fn">5.16</td><td class="fn">5.05</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.20</span><div class="sb2b"><div class="sb2f" style="width:74%"></div></div></div></td>
-<td class="fn">¥533</td>
-<td><span class="tag tgn">粘性强</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">7</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">菲仕兰食品贸易（上海）有限公司</td>
-<td class="fn">4.87</td><td class="fn">3.96</td><td class="fn">6.86</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
-<td class="fn">¥53</td>
-<td><span class="tag tte">利润优·需求待激活</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">8</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">亿滋食品企业管理（上海）有限公司</td>
-<td class="fn">3.88</td><td class="fn">4.99</td><td class="fn">6.79</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.14</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
-<td class="fn">¥500</td>
-<td><span class="tag tgr">稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">9</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">维萨信息系统（上海）有限公司</td>
-<td class="fn">4.70</td><td class="fn">3.76</td><td class="fn">7.23</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">5.13</span><div class="sb2b"><div class="sb2f" style="width:73%"></div></div></div></td>
-<td class="fn">¥572</td>
-<td><span class="tag tte">利润优·需求待激活</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">10</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苹果智元咨询（北京）有限公司</td>
-<td class="fn">5.36</td><td class="fn">4.00</td><td class="fn">5.58</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.95</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td>
-<td class="fn">¥1,207</td>
-<td><span class="tag tgn">粘性强</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">11</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">历峰商业有限公司</td>
-<td class="fn">5.30</td><td class="fn">3.52</td><td class="fn">6.05</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.90</span><div class="sb2b"><div class="sb2f" style="width:70%"></div></div></div></td>
-<td class="fn">¥684</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">12</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">埃克森美孚（中国）投资有限公司</td>
-<td class="fn">5.17</td><td class="fn">4.25</td><td class="fn">5.34</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.89</span><div class="sb2b"><div class="sb2f" style="width:69%"></div></div></div></td>
-<td class="fn">¥393</td>
-<td><span class="tag tgn">粘性强</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">13</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">露露乐蒙贸易（上海）有限公司</td>
-<td class="fn">5.29</td><td class="fn">2.90</td><td class="fn">6.41</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.79</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td>
-<td class="fn">¥80</td>
-<td><span class="tag tg">高潜稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">14</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">培生（北京）管理咨询有限公司</td>
-<td class="fn">4.18</td><td class="fn">3.60</td><td class="fn">6.81</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.76</span><div class="sb2b"><div class="sb2f" style="width:68%"></div></div></div></td>
-<td class="fn">¥250</td>
-<td><span class="tag tte">利润优·需求待激活</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">15</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">广州聚耀信息科技有限公司</td>
-<td class="fn">4.25</td><td class="fn">3.36</td><td class="fn">6.56</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.63</span><div class="sb2b"><div class="sb2f" style="width:66%"></div></div></div></td>
-<td class="fn">¥198</td>
-<td><span class="tag tte">利润优·需求待激活</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">16</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">上海国际主题乐园有限公司</td>
-<td class="fn">4.51</td><td class="fn">4.10</td><td class="fn">5.30</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.61</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
-<td class="fn">¥383</td>
-<td><span class="tag tgr">稳定</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">17</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CODE-CREATE LIMITED</td>
-<td class="fn">3.56</td><td class="fn">3.04</td><td class="fn">7.62</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.60</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
-<td class="fn">¥1</td>
-<td><span class="tag tte">利润优·需求待激活</span></td></tr>
-<tr><td class="fn" style="color:rgba(232,230,227,.35)">18</td>
-<td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雅诗兰黛（上海）商贸有限公司</td>
-<td class="fn">5.42</td><td class="fn">3.04</td><td class="fn">5.43</td>
-<td><div class="sb2"><span class="fn" style="font-weight:600">4.59</span><div class="sb2b"><div class="sb2f" style="width:65%"></div></div></div></td>
-<td class="fn">¥417</td>
-<td><span class="tag tgr">稳定</span></td></tr>
-</tbody></table></div>
-<div style="margin-top:1.2rem" class="pi"><strong class="gold">T3客户分群策略：</strong>
-<strong>高粘高利润型</strong>（金拱门/百事/可口可乐/达能）：深挖需求，推动跨行业合作。
-<strong>高利润低粘性型</strong>（百乐/亿滋/维萨/培生）：提升复购率，转向年度框架合作。
-<strong>均衡型</strong>（路威酩轩/苹果智元/历峰）：找到突破口，集中资源打造一个维度的跃升。</div>
+<!-- Client 1: 苹果电子产品 -->
+<div class="ec" style="margin-bottom:1.2rem;border-left:3px solid #c9a84c">
+<div class="ect"><span class="bi bg">🥇</span> <span class="gold fn">#1 苹果电子产品商贸（北京）有限公司</span> <span class="tag tg">A级 · 综合6.19</span></div>
+<div class="sng" style="margin-bottom:.8rem">
+<div class="sni"><div class="sl">粘性分</div><div class="sv fn">5.41</div><div class="sd">排名 #6</div></div>
+<div class="sni"><div class="sl">需求分</div><div class="sv fn">5.66</div><div class="sd">排名 #1</div></div>
+<div class="sni"><div class="sl">利润分</div><div class="sv fn">7.71</div><div class="sd">排名 #1</div></div>
+<div class="sni"><div class="sl">累计合同额</div><div class="sv fn">¥1,663万</div><div class="sd">28个项目</div></div>
+</div>
+<div style="font-size:.82rem;color:rgba(232,230,227,.65);line-height:1.8">
+<strong style="color:#c9a84c">画像：</strong>IT/3C行业标杆，28个项目覆盖常规投放，需求分和利润分双料第一。客户体量大（累计¥1,663万），ROI数据暂缺，但利润预估稳定。
+<strong style="color:#4ecdc4">优势：</strong>需求最强（5.66），表明预算充裕、投放意愿强。粘性中等（5.41），非最高频但合作持续。
+<strong style="color:#ef4444">短板：</strong>ROI无直接追踪，利润可观测性不足。5月仅1个项目¥63万，需要关注投放节奏。
+<strong style="color:#c9a84c">策略：</strong>①推动跨产品线投放（如Apple Music/App Store独立预算线）；②7月前建立ROI监测机制；③Q3围绕iPhone新机发布季输出"新品首发投放方案"。
+</div>
+</div>
+<!-- Client 2: 阿里妈妈 -->
+<div class="ec" style="margin-bottom:1.2rem;border-left:3px solid #4ecdc4">
+<div class="ect"><span class="bi bte">🥈</span> <span class="gold fn">#2 杭州阿里妈妈软件服务有限公司</span> <span class="tag tg">A级 · 综合6.14</span></div>
+<div class="sng" style="margin-bottom:.8rem">
+<div class="sni"><div class="sl">粘性分</div><div class="sv fn">7.71</div><div class="sd">排名 #1</div></div>
+<div class="sni"><div class="sl">需求分</div><div class="sv fn">4.24</div><div class="sd">排名 #2</div></div>
+<div class="sni"><div class="sl">利润分</div><div class="sv fn">6.53</div><div class="sd">排名 #3</div></div>
+<div class="sni"><div class="sl">累计合同额</div><div class="sv fn">¥2,291万</div><div class="sd">139个项目 · ROI=1.50</div></div>
+</div>
+<div style="font-size:.82rem;color:rgba(232,230,227,.65);line-height:1.8">
+<strong style="color:#c9a84c">画像：</strong>电商网服行业第一大客户，139个项目远超第二名（50个），粘性分7.71遥遥领先。累计合同额¥2,291万为全量最高。ROI=1.50偏低但稳定。
+<strong style="color:#4ecdc4">优势：</strong>合作频次无可匹敌，PD/PDB投放形式多样，跨多季度稳定合作，是平台的"收入基本盘"。
+<strong style="color:#ef4444">短板：</strong>ROI仅1.50，利润率空间有限。需求分4.24（排名#2）说明行业覆盖和增量为中等，依赖存量。
+<strong style="color:#c9a84c">策略：</strong>①推动跨品牌线合作（如淘宝/支付宝/盒马独立项目线）；②优化外采成本结构，通过提升自有流量占比将ROI从1.50提升至2.0+（每提升0.1约增加毛利¥23万）；③推动年度投放计划制，将高频小额订单合并为大单降低运营成本。
+</div>
+</div>
+<!-- Client 3: 金拱门 -->
+<div class="ec" style="margin-bottom:1rem;border-left:3px solid #a78bfa">
+<div class="ect"><span class="bi bpu">🥉</span> <span class="gold fn">#3 金拱门（中国）有限公司</span> <span class="tag tte">B级 · 综合5.74</span></div>
+<div class="sng" style="margin-bottom:.8rem">
+<div class="sni"><div class="sl">粘性分</div><div class="sv fn">6.80</div><div class="sd">排名 #3</div></div>
+<div class="sni"><div class="sl">需求分</div><div class="sv fn">3.85</div><div class="sd">排名 #5</div></div>
+<div class="sni"><div class="sl">利润分</div><div class="sv fn">6.71</div><div class="sd">排名 #4</div></div>
+<div class="sni"><div class="sl">累计合同额</div><div class="sv fn">¥1,074万</div><div class="sd">31个项目 · ROI=3.69</div></div>
+</div>
+<div style="font-size:.82rem;color:rgba(232,230,227,.65);line-height:1.8">
+<strong style="color:#c9a84c">画像：</strong>国际快消行业标杆，B级排名第一（综合5.74），距A级门槛（6.0）仅差0.26分。三维表现均衡且突出，是最有希望率先升入A级的客户。
+<strong style="color:#4ecdc4">优势：</strong>粘性分6.80极高（排名#3），31个项目跨多季度合作，常规+PD+PDB三种投放形式；利润分6.71，ROI=3.69优于同类客户。
+<strong style="color:#ef4444">短板：</strong>需求分3.85为三维中最弱项——行业单一（仅国际快消），缺乏新品牌线拓展，平均单笔¥34.7万中等。
+<strong style="color:#c9a84c">策略：</strong>①引入McCafé/得来速独立投放线，D3行业覆盖+1、D1客户体量+15%；②推动PDB占比从0%→30%，提升S5投放多样性；③目标Q3综合分突破6.0升入A级。
+</div>
+</div>
+<div style="margin-top:1.2rem" class="pi"><strong class="gold">Top3 总结：</strong>三家客户合计贡献¥5,027万合同额（占全量22.0%）和198个项目（占21.7%），是业务的绝对核心引擎。苹果电子产品偏"高需求+高利润"、阿里妈妈偏"高粘性+高体量"、金拱门偏"均衡发展+高潜力"，三者互补形成稳固的客户结构骨架。核心方向：苹果电子产品补齐ROI监测、阿里妈妈优化成本结构、金拱门冲刺A级。</div>
 </div>
 </section><section id="strat" class="fs">
 <div class="ctn">
@@ -748,44 +714,75 @@ footer .fl{margin-bottom:.2rem}
 <div class="ss">STRATEGIC RECOMMENDATIONS — PRIORITIZED</div>
 <div class="dv"></div>
 <div class="agg">
+<!-- Short-term -->
 <div class="acd">
 <div class="aci">⚡</div>
 <div class="acp">Short-term · 1-3个月</div>
 <div class="act2">速赢行动</div>
-<ul class="all">
-<li><span class="ptag3 p0">P0</span>A级客户保卫战：苹果/阿里妈妈各安排专属客户经理，确保续约率</li>
-<li><span class="ptag3 p0">P0</span>T3客户集中攻坚：21家B级客户逐一制定季度合作计划，目标5-8家升级</li>
-<li><span class="ptag3 p0">P1</span>高ROI案例包装：培生(14.18)/CODE-CREATE(12.00)/维萨(7.88)打造标杆</li>
-<li><span class="ptag3 p1">P1</span>9月旺季前锁定头部客户Q3框架协议，预防10月低谷</li>
-<li><span class="ptag3 p1">P1</span>ROI跟踪覆盖扩展：优先覆盖全部B级以上客户（23家）</li>
-<li><span class="ptag3 p2">P2</span>对利润>6但需求<3的客户启动需求唤醒campaign</li>
-</ul>
-<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 销售运营 + 客户成功</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p0">P0</span>金拱门/百事/可口可乐升级攻坚</div>
+<div class="action-detail">金拱门: 引入McCafé独立投放线，D3行业覆盖从1→2，需求分预计+1.5。百事: 推Mirinda+Lay's跨品牌线联合投放，单笔客单价+30%。可口可乐: PDB占比从0%提升至30%，利润分预计+0.8。3家目标9月前综合分突破6.0升入A级。</div>
 </div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p0">P0</span>高ROI案例体系化输出</div>
+<div class="action-detail">培生(ROI=14.18)包装为"教育行业程序化投放指南"、维萨(ROI=7.88)包装为"金融行业效果投放白皮书"。6月底前完成PDF+着陆页+3段短视频，用于同行业精准拓客。同步输出内部培训材料，沉淀方法论。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>5月首次合作客户转化</div>
+<div class="action-detail">网易云音乐(¥12万)、马歇尔(¥13.8万)、艾来茵(¥5万)3家，在投放结束后2周内输出定制化效果复盘（单客户30页PDF：曝光/点击/转化漏斗+行业benchmark对比），推动下一轮投放决策。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>ROI监测覆盖率补课</div>
+<div class="action-detail">23家B级客户中约15家无ROI监测，6月新项目中强制接入tracking代码（不影响投放流程）。目标6月底ROI覆盖率从24.5%→40%，Q3结束前覆盖全部B级以上客户。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>高利润低需求客户激活</div>
+<div class="action-detail">亿滋(利润6.79/需求4.99)、菲仕兰(6.86/3.96)、维萨(7.23/3.76)3家客户利润优异但投放频率偏低。6月各推送1份"同行业竞品投放策略对比报告"，展示竞品投放频次和多渠道组合，制造FOMO驱动追加投放。</div>
+</div>
+</div>
+<!-- Mid-term -->
 <div class="acd">
 <div class="aci">🎯</div>
 <div class="acp">Mid-term · 3-6个月</div>
 <div class="act2">结构优化</div>
-<ul class="all">
-<li><span class="ptag3 p0">P0</span>建立B→A升级通道，目标迁移3-5家至A级（金拱门/百事/可口可乐优先）</li>
-<li><span class="ptag3 p0">P1</span>Cluster 2客户专属服务团队，保住高利润客户群</li>
-<li><span class="ptag3 p1">P1</span>投放交叉销售：90家单一形式客户推荐PD/PDB，目标S5提升50%</li>
-<li><span class="ptag3 p1">P1</span>行业拓展：汽车(2家→5家)和金融行业专项获客计划</li>
-<li><span class="ptag3 p2">P2</span>月度趋势低谷期(10/2月)预设促销方案和框架协议锁定</li>
-</ul>
-<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 销售部 + 产品策略 + 行业BD</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p0">P0</span>投放产品交叉渗透</div>
+<div class="action-detail">90家仅用单一投放形式的客户中，筛选合同额≥¥30万的25家。按行业分组推送"PD+常规组合投放效果对比报告"（含AB test数据），目标Q3转化8家接入多产品线。S5投放多样性指标从2.18提升至3.0。</div>
 </div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>汽车/金融行业专项获客</div>
+<div class="action-detail">汽车: 当前仅比亚迪+埃克森美孚2家，利用美孚案例数据（ROI=2.19，9个项目持续合作）做行业背书，Q3 BD目标: 蔚来/理想/小鹏(预算¥100-300万/家) + 1家BBA合资品牌。金融: 以维萨ROI=7.88为核心案例，目标兴业银行/招商银行信用卡中心。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>高ROI模型复制扩展</div>
+<div class="action-detail">Cluster 3利润效率客户(23家)的投放特征分析: 低外采占比+精准人群定向+常规投放为主。按行业匹配潜在客户名单——培生→多邻国/英孚，雅诗兰黛→资生堂/SK-II，玛氏→费列罗/好时。Q3前完成5家同类客户BD。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p2">P2</span>低谷月产品化应对</div>
+<div class="action-detail">10月(历史低谷¥568万)推"国庆后补偿性追投"专项，提供延迟投放+ROI兜底方案；2月(历史低谷¥441万)推"春节品牌红包"社交裂变产品，利用节日流量红利降低获客成本。目标: 低谷月收入提升至均值的80%。</div>
+</div>
+</div>
+<!-- Long-term -->
 <div class="acd">
 <div class="aci">🚀</div>
 <div class="acp">Long-term · 6-12个月</div>
 <div class="act2">战略布局</div>
-<ul class="all">
-<li><span class="ptag3 p0">P0</span>培育2-3家S级战略合作伙伴，填补顶级客户空白</li>
-<li><span class="ptag3 p1">P1</span>C级长尾客户自动化运营体系，降低服务成本，激活复购</li>
-<li><span class="ptag3 p1">P1</span>客户数据中台建设，实现三维评分实时监测和自动预警</li>
-<li><span class="ptag3 p2">P2</span>"高ROI投放包"产品化，标准化输出吸引同类客户批量获取</li>
-</ul>
-<div style="font-size:.62rem;color:rgba(232,230,227,.3);margin-top:.5rem">负责团队: 战略部 + 数据团队 + 产品部</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p0">P0</span>S级战略客户培育</div>
+<div class="action-detail">从苹果电子产品(综合6.19)和阿里妈妈(6.14)中培育首家S级客户(≥7.5分)。关键动作: ①每月提供专属投放效果诊断报告（含竞品投放频次/渠道/ROI对比），帮助客户优化投放策略；②季度生意回顾会——从"卖广告"升级为"卖解决方案"，基于对方GMV/用户增长目标反向设计投放计划；③推动客户内部多个预算部门独立立项（如苹果的iPhone/Mac/服务三条线），将单一客户拆分为多个投放主体。目标: 12个月内综合分提升至7.5+。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>C级长尾客户自动化运营</div>
+<div class="action-detail">136家C级客户中筛选项目数≥2的约40家纳入智能触达系统。触发规则: ①每季度自动推送行业投放趋势报告（AI生成，零人工）；②客户合作间隔≥6月触发销售回访问卷自动发送；③竞争对手投放动态监控(通过第三方数据)。目标: 年复购率从30%提升至50%，降低人工跟进成本60%。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p1">P1</span>三维评分实时BI看板</div>
+<div class="action-detail">数据团队Q4前搭建自动化Dashboard（接CRM+财务系统），实现: ①粘性分<4自动发送预警邮件；②单项目ROI<1.5触发成本审计流程；③客户连续2季度无新增订单标记"流失风险"并推送销售跟进任务；④月度三维评分变化趋势自动生成，用于月度经营会汇报。替换当前手工Excel流程。</div>
+</div>
+<div class="action-block">
+<div class="action-head"><span class="ptag3 p2">P2</span>"效果保障投放包"产品化</div>
+<div class="action-detail">提炼培生(ROI=14.18)/维萨(7.88)/CODE-CREATE(12.00)的投放策略模型: 低外采占比+精准人群定向+常规为主+效果归因闭环。封装为"效果保障投放包"(ROI≥5承诺)，定价¥30-80万/期，包含: 策略方案+执行+效果报告。用于中小客户批量获取，降低销售谈判成本。</div>
+</div>
 </div>
 </div>
 </div>
@@ -826,11 +823,11 @@ footer .fl{margin-bottom:.2rem}
 <div class="gli"><span class="tm">RTB</span><span class="df">实时竞价 (Real-Time Bidding)</span></div>
 <div class="gli"><span class="tm">ROI</span><span class="df">投资回报率 (Return on Investment)</span></div>
 <div class="gli"><span class="tm">LTV</span><span class="df">客户终身价值 (Lifetime Value)</span></div>
-<div class="gli"><span class="tm">T3</span><span class="df">B级客户（综合分4.5~6.0）的别称</span></div>
+<div class="gli"><span class="tm">Top3</span><span class="df">综合评分排名前三的客户</span></div>
 <div class="gli"><span class="tm">S5</span><span class="df">投放多样性指标（粘性维度子指标）</span></div>
-<div class="gli"><span class="tm">新开</span><span class="df">首次合作的客户或项目</span></div>
+<div class="gli"><span class="tm">新开</span><span class="df">该笔订单发生时，客户属于首次合作（即无历史订单）</span></div>
 <div class="gli"><span class="tm">外采</span><span class="df">外部采购的流量/资源成本</span></div>
-<div class="gli"><span class="tm">撤单</span><span class="df">已签约但未执行的项目</span></div>
+<div class="gli"><span class="tm">撤单</span><span class="df">已确认但未执行的项目</span></div>
 </div>
 </div>
 <div class="aps">
@@ -988,5 +985,62 @@ function switchMonth(val){
   }
 }
 
+/* Star trail canvas */
+(function(){
+  const canvas=document.getElementById('star-trail');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let w,h,cx,cy;
+  function resize(){
+    w=canvas.width=canvas.offsetWidth;h=canvas.height=canvas.offsetHeight;
+    cx=w*1.15;cy=h*0.5;
+  }
+  resize();window.addEventListener('resize',resize);
+  const stars=[];
+  const totalStars=200;
+  for(let i=0;i<totalStars;i++){
+    const t=Math.random();
+    const r=350+Math.pow(t,2.5)*3000;
+    const theta=Math.random()*Math.PI*2;
+    const speed=(0.00008+Math.random()*0.00025)*(Math.random()<0.5?1:-1);
+    const arcLen=2.0+Math.random()*3.5;
+    const bright=0.06+Math.random()*0.18;
+    stars.push({
+      r:r,theta:theta,speed:speed,arcLen:arcLen,
+      bright:bright,width:0.4+Math.random()*0.4,phase:Math.random()*Math.PI*2
+    });
+  }
+  let frame=0;
+  function draw(){
+    frame++;
+    ctx.fillStyle='rgba(10,14,26,0.06)';
+    ctx.fillRect(0,0,w,h);
+    for(const s of stars){
+      const tw=0.4+0.6*Math.sin(frame*0.005+s.phase);
+      const alpha=s.bright*tw;
+      const tailTheta=s.theta-s.arcLen*(s.speed>0?1:-1);
+      ctx.save();
+      ctx.shadowBlur=6+s.width*8;
+      ctx.shadowColor='rgba(201,168,76,'+(alpha*0.4)+')';
+      ctx.strokeStyle='rgba(255,245,220,'+alpha+')';
+      ctx.lineWidth=s.width;
+      ctx.lineCap='round';
+      ctx.beginPath();
+      ctx.arc(cx,cy,s.r,tailTheta,s.theta,s.speed<0);
+      ctx.stroke();
+      ctx.restore();
+      s.theta+=s.speed;
+    }
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,10);
+    g.addColorStop(0,'rgba(255,255,255,0.7)');
+    g.addColorStop(0.15,'rgba(201,168,76,0.35)');
+    g.addColorStop(0.5,'rgba(201,168,76,0.03)');
+    g.addColorStop(1,'rgba(201,168,76,0)');
+    ctx.fillStyle=g;
+    ctx.beginPath();ctx.arc(cx,cy,10,0,Math.PI*2);ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 </body></html>
