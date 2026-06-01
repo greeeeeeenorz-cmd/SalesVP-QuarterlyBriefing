@@ -1004,7 +1004,7 @@ function switchMonth(val){
     const theta=Math.random()*Math.PI*2;
     const speed=(0.00008+Math.random()*0.00025)*(Math.random()<0.5?1:-1);
     const arcLen=2.0+Math.random()*3.5;
-    const bright=0.005+Math.random()*0.01;
+    const bright=0.00+Math.random()*0.0;
     stars.push({
       r:r,theta:theta,speed:speed,arcLen:arcLen,
       bright:bright,width:0.4+Math.random()*0.4,phase:Math.random()*Math.PI*2
@@ -1020,7 +1020,7 @@ function switchMonth(val){
       const alpha=s.bright*tw;
       const tailTheta=s.theta-s.arcLen*(s.speed>0?1:-1);
       ctx.save();
-      ctx.shadowBlur=0.5+s.width*1;
+      ctx.shadowBlur=0.0+s.width*0;
       ctx.shadowColor='rgba(201,168,76,'+(alpha*0.4)+')';
       ctx.strokeStyle='rgba(255,245,220,'+alpha+')';
       ctx.lineWidth=s.width;
